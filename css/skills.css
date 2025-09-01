@@ -1,0 +1,145 @@
+/* Skills*/
+
+/*Estiliza a seção de habilidades e suas abas*/
+/*Formata as barras de progresso das habilidades*/
+/*Define animações para os cards e barras de progresso*/
+/*Gerencia a exibição das diferentes categorias de habilidades*/
+
+.skills-tabs-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  
+  .skills-tab {
+    padding: 0.75rem 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gray);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+  }
+  
+  .skills-tab:after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transform: scaleX(0);
+    transition: var(--transition);
+  }
+  
+  .skills-tab.active {
+    color: var(--primary);
+  }
+  
+  .skills-tab.active:after {
+    transform: scaleX(1);
+  }
+  
+  .skills-tab-pane {
+    display: none;
+  }
+  
+  .skills-tab-pane.active {
+    display: block;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .skill-card {
+    background-color: var(--light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    transition: var(--transition-slow);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .skill-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+  }
+  
+  .skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .skill-name {
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .skill-name::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+  }
+  
+  .skill-card:hover .skill-name::after {
+    width: 100%;
+  }
+  
+  .skill-level {
+    font-size: 0.875rem;
+    color: var(--gray);
+    transition: var(--transition);
+  }
+  
+  .skill-card:hover .skill-level {
+    color: var(--primary);
+    font-weight: 600;
+  }
+  
+  .skill-bar {
+    height: 0.5rem;
+    background-color: var(--secondary);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .skill-progress {
+    height: 100%;
+    background-color: var(--primary);
+    border-radius: var(--border-radius);
+    width: 0;
+    transition: width 1s ease-in-out;
+  }
+  
+  .skill-card.visible .skill-progress {
+    width: var(--progress-width);
+  }
+  
+  .skill-card:hover .skill-progress {
+    background-image: linear-gradient(90deg, var(--primary), var(--primary-light));
+    animation: pulse 1.5s infinite;
+  }
+  

@@ -1,0 +1,219 @@
+/* Header */
+
+/*Estiliza o cabeçalho fixo do site*/
+/*Inclui o menu mobile e suas animações*/
+/*Gerencia a aparência do cabeçalho quando a página é rolada*/
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--light);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+  }
+  
+  .header.scrolled {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .logo::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+  }
+  
+  .logo:hover::after {
+    width: 100%;
+  }
+  
+  .nav-menu {
+    display: none;
+  }
+  
+  .nav-list {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-link {
+    color: var(--dark);
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+  }
+  
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  .nav-link:hover {
+    color: var(--primary);
+  }
+  
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+  }
+  
+  #theme-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--dark);
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    transition: var(--transition);
+    overflow: hidden;
+  }
+  
+  #theme-toggle-btn:hover {
+    background-color: var(--secondary);
+    transform: rotate(15deg);
+  }
+  
+  /* Configuração dos ícones de tema */
+  #theme-toggle-btn .fa-sun,
+  #theme-toggle-btn .fa-moon {
+    position: absolute;
+  }
+  
+  /* No tema claro, mostra a lua */
+  [data-theme="light"] #theme-toggle-btn .fa-sun {
+    display: none;
+  }
+  
+  [data-theme="light"] #theme-toggle-btn .fa-moon {
+    display: block;
+  }
+  
+  /* No tema escuro, mostra o sol */
+  [data-theme="dark"] #theme-toggle-btn .fa-sun {
+    display: block;
+  }
+  
+  [data-theme="dark"] #theme-toggle-btn .fa-moon {
+    display: none;
+  }
+  
+  /* Ícones de tema - configuração padrão */
+  .fa-sun,
+  .fa-moon {
+    position: absolute;
+    transition: var(--transition);
+  }
+  
+  /* No tema escuro, mostra o sol */
+  [data-theme="dark"] .fa-sun {
+    display: block;
+  }
+  
+  [data-theme="dark"] .fa-moon {
+    display: none;
+  }
+  
+  /* No tema claro, mostra a lua */
+  [data-theme="light"] .fa-sun {
+    display: none;
+  }
+  
+  [data-theme="light"] .fa-moon {
+    display: block;
+  }
+  
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--dark);
+    font-size: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    transition: var(--transition);
+  }
+  
+  .mobile-menu-btn:hover {
+    background-color: var(--secondary);
+    transform: rotate(90deg);
+  }
+  
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--light);
+    z-index: 99;
+    padding: 1.5rem;
+    transform: translateX(100%);
+    transition: var(--transition);
+    overflow-y: auto;
+  }
+  
+  .mobile-menu.active {
+    transform: translateX(0);
+  }
+  
+  .mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .mobile-nav-link {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--dark);
+    border-bottom: 1px solid var(--gray-light);
+    transition: var(--transition);
+  }
+  
+  .mobile-nav-link:hover {
+    color: var(--primary);
+    padding-left: 0.5rem;
+  }
+  

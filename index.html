@@ -1,0 +1,672 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Controlar como uma página web é exibida em dispositivos móveis. -->
+    <title>Eduardo - Dev Back-end</title>
+    <meta name="description" content="Portfólio profissional de Lucas, desenvolvedor fullstack especializado em React e Node.js">
+    
+    <!--LINKS-->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="images/favicon_att.png" type="image/png">
+
+    <!-- Google Fonts | Otimizações de desempenho, faz com que as fontes carreguem mais rápido, melhorando a performance. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome | Biblioteca de ícones vetoriais (Como os de redes sociais, setas, menus, lixeiras, etc.)-->
+    <link rel="stylesheet" href="css/all.min.css">
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Eduardo Weissheimer</a>
+                <nav class="nav-menu">
+                    <ul class="nav-list">
+                        <li><a href="#about" class="nav-link">Sobre</a></li>
+                        <li><a href="#projects" class="nav-link">Projetos</a></li>
+                        <li><a href="#experience" class="nav-link">Experiência</a></li>
+                        <li><a href="#skills" class="nav-link">Skills</a></li>
+                        <li><a href="#certifications" class="nav-link">Certificações</a></li>
+                        <li><a href="#contact" class="nav-link">Contato</a></li>
+                    </ul>
+                </nav>
+                <div class="theme-toggle">
+                    <button id="theme-toggle-btn" aria-label="Alternar tema" title="Alternar entre tema claro e escuro">
+                        <i class="fas fa-moon"></i>      
+                        <i class="fas fa-sun"></i>                
+                    </button>
+                </div>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-nav-list">
+            <li><a href="#about" class="mobile-nav-link">Sobre</a></li>
+            <li><a href="#projects" class="mobile-nav-link">Projetos</a></li>
+            <li><a href="#experience" class="mobile-nav-link">Experiência</a></li>
+            <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+            <li><a href="#certifications" class="mobile-nav-link">Certificações</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contato</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- Seção Sobre -->
+        <section id="about" class="section about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h1 class="about-title">Olá, eu sou o <span class="highlight">Eduardo!</span></h1>
+                        <h2 class="about-subtitle">Desenvolvedor Back-end</h2>
+                        <p class="about-description">
+                            Especializado em desenvolver aplicações robustas e escaláveis utilizando PHP, Laravel. Apaixonado por arquitetar soluções eficientes, otimizar desempenho e garantir segurança em sistemas complexos. Com mais de 2 anos de experiência construindo APIs, integrações e backends completos que suportam aplicações modernas.
+                        </p>
+                        <div class="about-buttons">
+                            <a href="#contact" class="btn btn-primary">Entre em contato</a>
+                            <a href="Assets/Curriculo.pdf" download="" class="btn btn-outline">
+                                <i class="fas fa-download"></i> Download CV
+                            </a>
+                        </div>
+                        <div class="social-links" style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem;">
+                            <a href="https://www.linkedin.com/in/eduardo-weissheimer/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin fa-2x"></i>
+                            </a>
+                            <a href="https://www.instagram.com/edu_weissheimer/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <i class="fab fa-instagram fa-2x"></i>
+                            </a>
+                            <a href="javascript:void(0);" class="email-link" aria-label="Email">
+                                <i class="fas fa-envelope fa-2x"></i>
+                            </a>                            
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div class="profile-image">
+                            <img src="images/eu.jpg" alt="Lucas" width="320" height="320">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Projetos -->
+        <section id="projects" class="section projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Meus Projetos</h2>
+                    <p class="section-description">
+                        Uma seleção dos meus trabalhos recentes em desenvolvimento web e aplicações.
+                    </p>
+                </div>
+                <div class="projects-grid">
+                    <!-- Projeto 1 -->
+                    <div class="project-card" data-category="fullstack">
+                        <div class="project-image">
+                            <img src="images/Logo%20e-commercePro.png" alt="E-commerce Moderno">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Parkew's Bank</h3>
+                            <p class="project-description">
+                                O Parkew's Bank é um projeto pessoal de plataforma bancária moderna e responsiva, desenvolvida para demonstrar boas práticas de back-end, 
+                                usabilidade e performance. Ele integra conceitos de experiência do usuário (UX) e interfaces modernas (UI), e todas as funcionalidades de um banco comum.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">PHP</span>
+                                <span class="tag">Laravel</span>
+                                <span class="tag">MySql</span>
+                            </div>
+                            <div class="project-highlights">
+                                <h4>Destaques:</h4>
+                                <ul>
+                                    <li>Funcionalidades → Saque e depósito, transações entre usuários, criação de conta pessoal.</li>
+                                    <li>Logs e Debug → Utilização de logs no Laravel para registro de eventos e erros, facilitando a análise e manutenção do sistema.</li>
+                                    <li>Segurança de Dados → Proteção de informações sensíveis com criptografia, validações robustas e políticas de acesso.</li>
+                                    <li>Conta Corrente e Conta Poupança → Comportamentos distintos para diferentes tipos de contas, com regras específicas de operação.</li>
+                                </ul>
+                            </div>
+                            <div class="project-links">
+                                <a href="#projects" target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+                                    <i class="fas fa-external-link-alt"></i> Visualizar
+                                </a>
+                                <a href="https://github.com/Eduardo220" target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+                                    <i class="fab fa-github"></i> Código
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 2 -->
+                    <div class="project-card" data-category="frontend">
+                        <div class="project-image">
+                            <img src="images/Logo%20CodeVital.png" alt="Dashboard Analítico">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Dash</h3>
+                            <p class="project-description">
+                                A Dash é uma loja online de vendas, trazendo um design moderno e imersivo e vibrantes. O site foi construído para vendas online, com uma identidade forte.
+                            </p><div class="project-tags">                               
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <div class="project-highlights">
+                                <h4>Destaques:</h4>
+                                <ul>
+                                    <li>Identidade Visual Marcante → Logo baseada em um globo digital, representando tecnologia, conexão e impacto global.</li>
+                                    <li>Dark Mode Moderno → Interface sofisticada com fundo escuro e contrastes coloridos, garantindo legibilidade e estilo.</li>
+                                    <li>Paleta de Cores Vibrante → Combinação de azuis, verdes e detalhes em laranja/amarelo que transmitem energia, vitalidade e inovação.</li>
+                                </ul>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://dashgg.site/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+                                <i class="fas fa-external-link-alt"></i> Visualizar
+                                </a>
+                                <a href="#projects" target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+                                    <i class="fab fa-github"></i> Código
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 3 -->
+                    <div class="project-card" data-category="backend">
+                        <div class="project-image">
+                            <img src="images/Logo%20SGHSS.png" alt="API de Gerenciamento">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">WayPer</h3>
+                            <p class="project-description">
+                                Em Breve!!!
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">React.js</span>
+                                <span class="tag">Boostrap</span>
+                                <span class="tag">Tailwind</span>
+                            </div>
+                            <div class="project-highlights">
+                                <h4>Destaques:</h4>
+                                <ul>
+                                    <li>Em Breve</li>
+                                    <li>Em Breve</li>
+                                    <li>Em Breve</li>
+                                </ul>
+                            </div>
+                            <div class="project-links">
+                                <a href="#projects" target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+                                    <i class="fas fa-external-link-alt"></i> Visualizar
+                                </a>
+                                <a href="https://github.com/Lucas-C-Machado" target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+                                    <i class="fab fa-github"></i> Código
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Experiência -->
+        <section id="experience" class="section experience-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Experiência Profissional</h2>
+                    <p class="section-description">
+                        Minha trajetória profissional e principais realizações.
+                    </p>
+                </div>
+
+                <div class="experience-timeline">
+                    <!-- Experiência 1 -->
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div class="experience-info">
+                                <h3 class="experience-title">Assistente de loja</h3>
+                                <h4 class="experience-company">Lojas Renner S.A</h4>
+                            </div>
+                            <div class="experience-period">Jul 2025 - Atualmente</div>
+                        </div>
+                        <div class="experience-content">
+                            <p class="experience-description">
+                                Atuo na organização de roupas e acessórios, conversão e prospecção de clientes, contribuindo para a eficiência logística e organizacional da empresa. Experiência no uso de ferramentas digitais e apoio a processos internos.                            </p><div class="experience-achievements">
+                                <h4>Principais realizações:</h4>
+                                <ul>
+                                    <li>Prospecção e conversão de clientes.</li>
+                                    <li>Operações de Venda - Ajudando na finalização de compras.</li>
+                                    <li>Serviços Financeiros - Oferecendo serviços financeiros da Renner.</li>
+                                    <li>Colaboração - Colaborando com a equipe para cumprir metas e garantir o bom funcionamento da loja.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experiência 2 -->
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div class="experience-info">
+                                <h3 class="experience-title">Operador</h3>
+                                <h4 class="experience-company">Supermercados Copetti</h4>
+                            </div>
+                            <div class="experience-period">Jun 2025 - Jul 2025</div>
+                        </div>
+                        <div class="experience-content">
+                            <p class="experience-description">
+                                Atuei como operador no mercado, auxiliando na gestão e organização e manutenção de produtos.</p>
+                            <div class="experience-achievements">
+                                <h4>Principais realizações:</h4>
+                                <ul>
+                                    <li>Controle de estoque de produtos.</li>
+                                    <li>Controle da validade de produtos.</li>
+                                    <li>Organização das prateleiras e bancadas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experiência 3 -->
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div class="experience-info">
+                                <h3 class="experience-title">Auxiliar de seção / S3</h3>
+                                <h4 class="experience-company">1° RCC</h4>
+                            </div>
+                            <div class="experience-period">Mar 2023 - Fev 2025</div>
+                        </div>
+                        <div class="experience-content">
+                            <p class="experience-description">
+                                Iniciei no setor administrativo, atuando na organização de documentos, emissão de notas fiscais e controle financeiro. Atualmente evoluí para funções no almoxarifado, com foco no controle e distribuição de materiais e insumos, contribuindo para a eficiência logística e administrativa da empresa. Experiência no uso de ferramentas digitais e apoio a processos internos.                            </p><div class="experience-achievements">
+                                <h4>Principais realizações:</h4>
+                                <ul>
+                                    <li>Planejei operações e atividades anuais, considerando os recursos disponíveis e os objetivos a serem alcançados.</li>
+                                    <li>Treinamento em técnicas de sobrevivência e primeiros socorros, ampliando as capacitações e conhecimentos técnicos para o resgate de vítimas de acidentes.</li>
+                                    <li>Participação em operações militares, cumprindo as estratégias desenvolvidas para o sucesso e eficiência do trabalho realizado.</li>
+                                    <li>Apoio logístico em operações militares, conduzindo veículos de transporte e mantendo uma comunicação eficiente com os superiores para a coordenação da equipe.</li>
+                                    <li>Organização de arquivos e documentos de +500 militares.</li>
+                                    <li>Operação Taquari II - Resposta às enchentes que atingiram o Rio Grande do Sul em 2024, com atuação em resgates e apoio às comunidades afetadas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </section>
+
+        <!-- Seção Skills -->
+        <section id="skills" class="section skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Habilidades & Tecnologias</h2>
+                    <p class="section-description">
+                        Ferramentas e tecnologias com as quais tenho experiência.
+                    </p>
+                </div>
+
+                <div class="skills-tabs">
+                    <div class="skills-tabs-content">
+                        <!-- Front end Skills -->
+                        <div class="skills-tab-pane active" id="frontend-skills">
+                            <div class="skills-grid">
+                                <div class="skill-card">
+                                    <div class="skill-info">
+                                        <h3 class="skill-name">HTML</h3>
+                                        <span class="skill-level">90%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-info">
+                                        <h3 class="skill-name">CSS</h3>
+                                        <span class="skill-level">64%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 64%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-info">
+                                        <h3 class="skill-name">JavaScript</h3>
+                                        <span class="skill-level">53%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 53%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-info">
+                                        <h3 class="skill-name">Laravel</h3>
+                                        <span class="skill-level">92%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 92%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-info">
+                                        <h3 class="skill-name">PHP</h3>
+                                        <span class="skill-level">97%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 97%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-info">
+                                        <h3 class="skill-name">GitHub</h3>
+                                        <span class="skill-level">92%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 92%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-info">
+                                        <h3 class="skill-name">VS Studio Code</h3>
+                                        <span class="skill-level">94%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 94%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-info">
+                                        <h3 class="skill-name">MySql</h3>
+                                        <span class="skill-level">91%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 91%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-info">
+                                        <h3 class="skill-name">Git</h3>
+                                        <span class="skill-level">98%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 98%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Certificações -->
+        <section id="certifications" class="section certifications-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Certificações & Formações</h2>
+                    <p class="section-description">
+                        Minha formação acadêmica e certificações profissionais.
+                    </p>
+                </div>
+
+                <div class="certifications-grid">
+                    <!-- Certificação 1 -->
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="certification-content">
+                            <h3 class="certification-title">Análise e Desenvolvimento de Sistemas (ADS)</h3>
+                            <h4 class="certification-institution">Centro Universitário Internacional (UNINTER)</h4>
+                            <div class="certification-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Em andamento</span>
+                            </div>
+                            <p class="certification-description">
+                                Capacitado para planejar, desenvolver, testar, implementar e manter sistemas de informação que atendam às necessidades de empresas e usuários.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Certificação 2 -->
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="certification-content">
+                            <h3 class="certification-title">Curso de Formação em Git e GitHub</h3>
+                            <h4 class="certification-institution">DIO</h4>
+                            <div class="certification-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>2025</span>
+                            </div>
+                            <p class="certification-description">
+                                Formação GitHub Certification: capacita profissionais em Git e GitHub, desenvolvimento colaborativo, gestão de projetos e boas práticas de segurança, preparando para soluções inovadoras e liderança em ambientes de software complexos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Certificação 3 -->
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="certification-content">
+                            <h3 class="certification-title">Curso de Formação PHP Experience</h3>
+                            <h4 class="certification-institution">DIO</h4>
+                            <div class="certification-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>2025</span>
+                            </div>
+                            <p class="certification-description">
+                                Imersão em PHP: capacita profissionais em desenvolvimento web com PHP, criação de APIs e uso do Laravel, preparando para projetos modernos e escaláveis.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Certificação 4 -->
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="certification-content">
+                            <h3 class="certification-title">Curso de Formação SQL Database Specialist</h3>
+                            <h4 class="certification-institution">DIO</h4>
+                            <div class="certification-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>2025</span>
+                            </div>
+                            <p class="certification-description">
+                                Curso de Banco de Dados: capacita profissionais em modelagem, manipulação e controle de dados, criando soluções eficientes e seguindo boas práticas de gestão de bancos de dados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Contato -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Entre em Contato</h2>
+                    <p class="section-description">
+                        Tem um projeto em mente ou quer conversar? Ficarei feliz em responder!
+                    </p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-form-container">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Envie uma mensagem</h3>
+                                <p class="card-description">
+                                    Preencha o formulário abaixo e entrarei em contato o mais breve possível.
+                                </p>
+                            </div>
+                            <div class="card-content">
+                                <!-- Iframe oculto para receber a resposta do formulário -->
+                                <iframe name="hidden-iframe" id="hidden-iframe" style="display:none;"></iframe>
+                                
+                                <form id="contact-form" class="contact-form" action="https://formsubmit.co/eduardo.weissheimer22@gmail.com" method="POST" target="hidden-iframe">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label for="name">Nome</label>
+                                            <input type="text" id="name" name="Nome" placeholder="Seu nome" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="e-mail">Email</label>
+                                            <input type="email" id="email" name="E-mail" placeholder="seu-email@exemplo.com" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="subject">Assunto</label>
+                                        <input type="text" id="subject" name="Assunto" placeholder="Assunto da mensagem" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message">Mensagem</label>
+                                        <textarea id="message" name="Mensagem" placeholder="Sua mensagem" rows="5" required=""></textarea>
+                                    </div>
+                                    <!-- Campos ocultos para FormSubmit -->
+                                    <input type="hidden" name="_captcha" value="false">
+                                    <input type="hidden" name="_template" value="table">
+                                    <input type="hidden" name="_subject" value="Nova mensagem do portfólio">
+                                    <input type="hidden" name="_next" value="">
+                                    
+                                    <button type="submit" class="btn btn-primary btn-block" id="submit-btn">
+                                        <span id="submit-text">Enviar Mensagem</span>
+                                        <span id="submit-loading" style="display: none;">
+                                            <i class="fas fa-spinner fa-spin"></i> Enviando...
+                                        </span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-container">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Informações de Contato</h3>
+                                <p class="card-description">
+                                    Outras formas de entrar em contato comigo.
+                                </p>
+                            </div>
+                            <div class="card-content">
+                                <div class="contact-info">
+                                    <div class="contact-info-item">
+                                        <div class="contact-info-icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div class="contact-info-content">
+                                            <h4>Email</h4>
+                                            <a href="javascript:void(0);" class="email-link">eduardo.weissheimer22@gmail.com</a>
+                                        </div>
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <div class="contact-info-icon">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div class="contact-info-content">
+                                            <h4>Telefone</h4>
+                                            <a href="tel:+5555992094317">+55 (55) 98408-0642</a>
+                                        </div>
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <div class="contact-info-icon">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="contact-info-content">
+                                            <h4>Localização</h4>
+                                            <p>Santa Maria, RS - Brasil</p>
+                                        </div>
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <div class="contact-info-icon">
+                                            <i class="fab fa-linkedin"></i>
+                                        </div>
+                                        <div class="contact-info-content">
+                                            <h4>LinkedIn</h4>
+                                            <a href="https://www.linkedin.com/in/eduardo-weissheimer/" target="_blank" rel="noopener noreferrer">
+                                                linkedin.com/in/eduardo-weissheimer
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <div class="contact-info-icon">
+                                            <i class="fab fa-github"></i>
+                                        </div>
+                                        <div class="contact-info-content">
+                                            <h4>GitHub</h4>
+                                            <a href="https://github.com/Eduardo220" target="_blank" rel="noopener noreferrer">
+                                                https://github.com/Eduardo220
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-copyright">
+                    <p>© <span id="current-year"></span> Eduardo. Todos os direitos reservados.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/Eduardo220" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/eduardo-weissheimer/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="javascript:void(0);" class="email-link" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast de notificação -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle toast-icon"></i>
+            <div class="toast-message">Mensagem enviada com sucesso! Obrigado pelo contato.</div>
+        </div>
+        <button class="toast-close" aria-label="Fechar">×</button>
+    </div>
+
+<!-- Adicione este código logo antes do fechamento da tag </body> -->
+<div id="thank-you-modal" class="thank-you-modal">
+    <div class="thank-you-content">
+        <div class="thank-you-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h2 class="thank-you-title">Mensagem Enviada!</h2>
+        <p class="thank-you-message">
+            Obrigado pelo seu contato. Recebi sua mensagem e responderei o mais breve possível.
+        </p>
+        <div class="countdown">
+            Redirecionando em <span id="countdown">5</span> segundos...
+        </div>
+        <button id="close-thank-you" class="btn btn-primary">
+            <i class="fas fa-arrow-left"></i> Voltar para o site
+        </button>
+    </div>
+</div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/skills.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+
+
+</body></html>

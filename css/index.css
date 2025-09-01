@@ -1,0 +1,17 @@
+/*Arquivo principal que importa todos os outros*/
+
+/*Serve como ponto de entrada único para todos os estilos*/
+/*Mantém a organização e a ordem de carregamento dos estilos*/
+
+@import "base.css";
+@import "header.css";
+@import "about.css";
+@import "projects.css";
+@import "experience.css";
+@import "skills.css";
+@import "certifications.css";
+@import "contact.css";
+@import "footer.css";
+@import "toast.css";
+@import "modal.css";
+@import "responsive.css";

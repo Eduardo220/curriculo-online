@@ -1,0 +1,99 @@
+/* Certifications Section */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .certification-card {
+    display: flex;
+    gap: 1rem;
+    background-color: var(--light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    transition: var(--transition-slow);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .certification-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .certification-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+  }
+  
+  .certification-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--primary);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    transition: var(--transition-bounce);
+  }
+  
+  .certification-card:hover .certification-icon {
+    transform: scale(1.1);
+    background-color: var(--primary);
+    color: white;
+  }
+  
+  .certification-content {
+    flex-grow: 1;
+  }
+  
+  .certification-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .certification-title::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+  }
+  
+  .certification-card:hover .certification-title::after {
+    width: 100%;
+  }
+  
+  .certification-institution {
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: 0.5rem;
+  }
+  
+  .certification-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--gray);
+    margin-bottom: 0.5rem;
+  }
+  
+  .certification-card:hover .certification-date {
+    color: var(--primary);
+  }
+  
+  .certification-description {
+    color: var(--gray);
+  }
+  

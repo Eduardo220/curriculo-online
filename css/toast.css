@@ -1,0 +1,77 @@
+/* Toast*/
+
+/*Estiliza as notificações toast que aparecem na tela*/
+/*Define animações de entrada e saída*/
+/*Formata os diferentes tipos de notificações*/
+/*Inclui estilos para o botão de fechar*/
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: 1rem 1.5rem;
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    transform: translateY(150%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    border-left: 4px solid #10b981;
+    min-width: 300px;
+  }
+  
+  /* Toast para cópia de email */
+  .toast.email-copied {
+    border-left-color: #10b981;
+  }
+  
+  .toast.email-copied .toast-icon {
+    color: #10b981;
+  }
+  
+  .toast.show {
+    display: flex;
+    transform: translateY(0);
+    animation: bounce 0.5s;
+  }
+  
+  .toast-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+  }
+  
+  .toast-icon {
+    color: #10b981;
+    font-size: 1.5rem;
+  }
+  
+  .toast-message {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  
+  .toast-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: var(--gray);
+    margin-left: 0.5rem;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+  }
+  
+  .toast-close:hover {
+    background-color: var(--secondary);
+    transform: rotate(90deg);
+  }
+  

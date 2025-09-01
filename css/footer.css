@@ -1,0 +1,60 @@
+/* Footer*/
+
+Estiliza o rodapé do site
+/*Formata os direitos autorais e links sociais*/
+/*Define a aparência e animações dos ícones sociais*/
+/*Gerencia o layout responsivo do rodapé*/
+
+.footer {
+    background-color: var(--light);
+    border-top: 1px solid var(--gray-light);
+    padding: 2rem 0;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .footer-copyright {
+    color: var(--gray);
+    font-size: 0.875rem;
+  }
+  
+  .footer-social {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    color: var(--dark);
+    font-size: 1.25rem;
+    transition: var(--transition-bounce);
+  }
+  
+  .footer-social a:hover {
+    background-color: var(--primary);
+    color: var(--light);
+    transform: translateY(-5px);
+  }
+  
+  /* Estilo para o ícone de email quando copiado no rodapé */
+  .footer-social .email-link i.fa-envelope-open {
+    color: #10b981;
+  }
+  
+  .footer-social .email-link:has(i.fa-envelope-open) {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+  }

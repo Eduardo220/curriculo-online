@@ -1,0 +1,143 @@
+/* Projects*/
+
+/*Formata os cards de projetos e seu layout em grid*/
+/*Define animações e transições para os cards*/
+/*Estiliza as imagens, títulos e tags dos projetos*/
+/*Inclui efeitos de hover para os elementos interativos*/
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .project-card {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background-color: var(--light);
+    box-shadow: var(--shadow);
+    transition: var(--transition-slow);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+  }
+  
+  .project-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .project-image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 70%, rgba(0, 0, 0, 0.2));
+    opacity: 0;
+    transition: var(--transition);
+  }
+  
+  .project-card:hover .project-image::after {
+    opacity: 1;
+  }
+  
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-slow);
+  }
+  
+  .project-card:hover .project-image img {
+    transform: scale(1.1);
+  }
+  
+  .project-content {
+    padding: 1.5rem;
+  }
+  
+  .project-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .project-title::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+  }
+  
+  .project-card:hover .project-title::after {
+    width: 100%;
+  }
+  
+  .project-description {
+    color: var(--gray);
+    margin-bottom: 1rem;
+  }
+  
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .tag {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background-color: var(--secondary);
+    border-radius: var(--border-radius);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--dark);
+    transition: var(--transition);
+  }
+  
+  .project-card:hover .tag {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .project-highlights {
+    margin-bottom: 1rem;
+  }
+  
+  .project-highlights h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .project-highlights ul {
+    padding-left: 1.25rem;
+    list-style-type: disc;
+    color: var(--gray);
+    font-size: 0.875rem;
+  }
+  
+  .project-links {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
