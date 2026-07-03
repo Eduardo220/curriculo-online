@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eduardo220.github.io/curriculo-online/sitemap.xml
