@@ -7,5 +7,6 @@ export default defineConfig({
   build: {
     cssCodeSplit: true,
     sourcemap: false,
+    target: "es2022",
   },
 });
