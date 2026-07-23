@@ -1,40 +1,46 @@
 import { Suspense, lazy } from "react";
-import { motion } from "framer-motion";
-import Background from "./components/Background.jsx";
-import Header from "./components/Header.jsx";
-import Hero from "./components/Hero.jsx";
-import AboutSection from "./components/AboutSection.jsx";
-import StackSection from "./components/StackSection.jsx";
-import ExperienceTimeline from "./components/ExperienceTimeline.jsx";
-import ProjectsSection from "./components/ProjectsSection.jsx";
-import StatsSection from "./components/StatsSection.jsx";
-import ContactSection from "./components/ContactSection.jsx";
-import Footer from "./components/Footer.jsx";
-import Section from "./components/Section.jsx";
-import { profile } from "./data/portfolio.js";
+import Background from "./components/layout/Background.jsx";
+import Header from "./components/layout/Header.jsx";
+import Footer from "./components/layout/Footer.jsx";
+import Hero from "./components/sections/Hero.jsx";
+import AboutSection from "./components/sections/AboutSection.jsx";
+import ExperienceSection from "./components/sections/ExperienceSection.jsx";
+import WayperSection from "./components/wayper/WayperSection.jsx";
+import ProjectsSection from "./components/sections/ProjectsSection.jsx";
+import StackSection from "./components/sections/StackSection.jsx";
+import EducationSection from "./components/sections/EducationSection.jsx";
+import ContactSection from "./components/sections/ContactSection.jsx";
+import Section from "./components/common/Section.jsx";
 
-const GithubSection = lazy(() => import("./components/GithubSection.jsx"));
+const GithubSection = lazy(
+  () => import("./components/sections/GithubSection.jsx"),
+);
 
 export default function App() {
   return (
     <>
+      <a className="skip-link" href="#conteudo">
+        Pular para o conteúdo
+      </a>
       <Background />
       <Header />
-      <motion.main
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
-      >
+      <main id="conteudo" tabIndex="-1">
         <Hero />
         <AboutSection />
-        <StackSection />
-        <ExperienceTimeline />
+        <ExperienceSection />
+        <WayperSection />
         <ProjectsSection />
-        <StatsSection />
+        <StackSection />
+        <EducationSection />
         <Suspense
           fallback={
-            <Section eyebrow="GitHub" title="Atividade técnica em carregamento">
-              <div className="surface-panel github-skeleton" aria-hidden="true">
+            <Section
+              id="github"
+              eyebrow="GitHub público"
+              title="Carregando a seleção de código público."
+              className="github-section"
+            >
+              <div className="github-loading" aria-label="Carregando dados do GitHub">
                 <span />
                 <span />
                 <span />
@@ -42,10 +48,10 @@ export default function App() {
             </Section>
           }
         >
-          <GithubSection username={profile.githubUsername} />
+          <GithubSection />
         </Suspense>
         <ContactSection />
-      </motion.main>
+      </main>
       <Footer />
     </>
   );
