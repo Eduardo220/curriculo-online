@@ -75,10 +75,10 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-height) + 1.5rem);
+  overflow-x: clip;
 }
 
 body {
-  min-width: 20rem;
   min-height: 100vh;
   margin: 0;
   overflow-x: clip;
@@ -1027,11 +1027,11 @@ main:focus {
 
 /* Wayper */
 
-.wayper-section {
-  overflow: hidden;
+.wayper-project {
+  position: relative;
 }
 
-.wayper-section::before {
+.wayper-project::before {
   position: absolute;
   top: 5rem;
   right: -18rem;
@@ -1042,6 +1042,24 @@ main:focus {
   filter: blur(100px);
   content: "";
   pointer-events: none;
+}
+
+.project-group-heading {
+  position: relative;
+  display: grid;
+  max-width: 44rem;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.project-group-heading h3 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+}
+
+.project-group-heading p {
+  color: var(--color-text-soft);
 }
 
 .wayper-showcase {
@@ -1084,7 +1102,7 @@ main:focus {
   box-shadow: 0 0 12px currentColor;
 }
 
-.wayper-showcase__intro h3 {
+.wayper-showcase__intro h4 {
   max-width: 14ch;
   margin-top: var(--space-5);
   font-size: clamp(2rem, 6vw, 3.7rem);
@@ -1193,24 +1211,28 @@ main:focus {
     0 0 12px rgba(184, 255, 61, 0.08);
 }
 
-.wayper-map__route {
+.wayper-map__territory {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  inset: 8%;
+  width: 84%;
+  height: 84%;
+  transform: perspective(800px) rotateX(54deg) rotateZ(-9deg) scale(1.14);
+  transform-origin: center;
 }
 
-.wayper-map__route path {
-  fill: none;
+.wayper-map__territory path {
+  fill: rgba(184, 255, 61, 0.08);
   stroke: var(--color-primary);
   stroke-linecap: round;
+  stroke-linejoin: round;
   stroke-width: 5;
   filter: drop-shadow(0 0 8px rgba(184, 255, 61, 0.65));
 }
 
-.wayper-map__route .wayper-map__route-shadow {
+.wayper-map__territory .wayper-map__territory-shadow {
+  fill: none;
   stroke: rgba(0, 0, 0, 0.72);
-  stroke-width: 13;
+  stroke-width: 11;
   filter: none;
 }
 
@@ -1336,7 +1358,7 @@ main:focus {
   font-size: 0.62rem;
 }
 
-.case-study-grid h3 {
+.case-study-grid h4 {
   margin-top: var(--space-4);
   font-size: 1.25rem;
 }
@@ -1358,7 +1380,7 @@ main:focus {
   margin-bottom: var(--space-8);
 }
 
-.wayper-architecture > header h3 {
+.wayper-architecture > header h4 {
   font-size: clamp(1.65rem, 5vw, 2.8rem);
   letter-spacing: -0.04em;
   line-height: 1.12;
@@ -1383,7 +1405,8 @@ main:focus {
   font-size: 0.62rem;
 }
 
-.wayper-architecture h4 {
+.wayper-architecture h5 {
+  margin: 0;
   font-size: 1rem;
 }
 
@@ -1413,8 +1436,8 @@ main:focus {
   margin-bottom: var(--space-6);
 }
 
-.wayper-capabilities h3,
-.wayper-engineering h3 {
+.wayper-capabilities h4,
+.wayper-engineering h4 {
   font-size: 1.35rem;
   letter-spacing: -0.025em;
 }
@@ -1456,7 +1479,8 @@ main:focus {
   color: var(--color-secondary);
 }
 
-.wayper-engineering h4 {
+.wayper-engineering h5 {
+  margin: 0;
   font-size: 0.94rem;
 }
 
@@ -1477,7 +1501,7 @@ main:focus {
   border-left: 1px solid var(--color-border-strong);
 }
 
-.wayper-evolution h3 {
+.wayper-evolution h4 {
   max-width: 20ch;
   margin-top: var(--space-4);
   font-size: 1.3rem;
@@ -1528,7 +1552,26 @@ main:focus {
 /* Projects */
 
 .projects-section {
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.012);
+}
+
+.other-projects {
+  margin-top: var(--space-20);
+  padding-top: var(--space-12);
+  border-top: 1px solid var(--color-border);
+}
+
+.other-projects__heading {
+  display: grid;
+  max-width: 42rem;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.other-projects__heading p {
+  color: var(--color-text-soft);
+  font-size: 1.05rem;
 }
 
 .project-feature {
@@ -1679,28 +1722,6 @@ main:focus {
   font-size: 0.62rem;
 }
 
-.private-work-note {
-  display: grid;
-  gap: var(--space-4);
-  margin-top: var(--space-6);
-  padding: var(--space-6);
-  border-left: 2px solid var(--color-primary);
-  background: var(--color-primary-muted);
-}
-
-.private-work-note span {
-  color: var(--color-primary);
-  font-family: var(--font-mono);
-  font-size: 0.64rem;
-  text-transform: uppercase;
-}
-
-.private-work-note p {
-  max-width: 55rem;
-  color: var(--color-text-soft);
-  font-size: 0.88rem;
-}
-
 /* Stack */
 
 .stack-list {
@@ -1847,13 +1868,6 @@ main:focus {
   border-top: 1px solid var(--color-border);
   color: var(--color-text-soft);
   font-size: 0.86rem;
-}
-
-.education-source {
-  margin-top: var(--space-4);
-  color: var(--color-muted);
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
 }
 
 /* GitHub */
@@ -2496,12 +2510,6 @@ main:focus {
 
   .project-facts {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .private-work-note {
-    grid-template-columns: 12rem minmax(0, 1fr);
-    align-items: start;
-    padding: var(--space-8);
   }
 
   .stack-list > article {

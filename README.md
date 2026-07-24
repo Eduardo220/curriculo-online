@@ -1,6 +1,6 @@
 # Portfólio — Eduardo Weissheimer
 
-Portfólio profissional em português brasileiro, orientado a oportunidades em backend, aplicativos, integrações, APIs e produtos digitais. O conteúdo apresenta a experiência de Eduardo Weissheimer e usa o Wayper como estudo de caso técnico principal.
+Currículo online e portfólio em português brasileiro, com experiência profissional, formação, stack e projetos de Eduardo Weissheimer. O foco principal está em backend e desenvolvimento mobile; o Wayper aparece como destaque dentro da seção de projetos.
 
 URL esperada: <https://eduardo220.github.io/curriculo-online/>
 
@@ -49,7 +49,7 @@ src/
     wayper/       estudo de caso e visual do Wayper
   data/           conteúdo profissional centralizado
   hooks/          comportamento de navegação
-  services/       integração resiliente com GitHub
+  services/       consulta resiliente à API do GitHub
   styles/         sistema visual global
 public/
   images/         imagem social e foto para dados estruturados
@@ -175,7 +175,7 @@ Ao mudar o endereço de publicação, atualize:
 
 ## Direção visual
 
-O sistema usa grafite, verde elétrico e azul técnico. Mapas, topografia, rotas e telemetria aparecem como linguagem visual, sem reproduzir a interface do Wayper. As famílias tipográficas são a pilha sans-serif do sistema e uma pilha monoespaçada para labels técnicos.
+O sistema usa grafite, verde elétrico e azul técnico. Grades, topografia e telemetria aparecem como linguagem visual do portfólio; o mapa territorial fica concentrado no projeto Wayper. As famílias tipográficas são a pilha sans-serif do sistema e uma pilha monoespaçada para labels técnicos.
 
 As animações usam principalmente `transform` e `opacity`, ficam mais discretas no mobile e são removidas quando o sistema solicita redução de movimento.
 

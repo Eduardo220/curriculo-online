@@ -72,8 +72,8 @@ export default function ContactSection() {
     <Section
       id="contato"
       eyebrow="Contato"
-      title="Se o problema pede backend, integração ou produto mobile, vamos conversar."
-      description="O formulário é curto de propósito. Se preferir, use email, LinkedIn ou GitHub diretamente."
+      title="Quer falar comigo?"
+      description="Você pode mandar uma mensagem por aqui ou me chamar pelo email, LinkedIn ou GitHub."
       className="contact-section"
     >
       <div className="contact-layout">
@@ -164,9 +164,9 @@ export default function ContactSection() {
 
         <aside className="contact-aside">
           <div>
-            <span className="eyebrow">Canais diretos</span>
-            <h3>Sem intermediários.</h3>
-            <p>Responderei assim que possível. Nenhum telefone é exposto neste site.</p>
+            <span className="eyebrow">Contato</span>
+            <h3>Onde me encontrar</h3>
+            <p>Respondo assim que puder.</p>
           </div>
 
           <address>

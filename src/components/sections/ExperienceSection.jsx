@@ -11,8 +11,8 @@ export default function ExperienceSection() {
     <Section
       id="experiencia"
       eyebrow="Experiência profissional"
-      title="Sistemas em operação pedem contexto, precisão e responsabilidade."
-      description="Duas experiências diferentes, apresentadas sem misturar emprego com conceito: desenvolvimento de software em operações digitais e uma base anterior em ambiente operacional estruturado."
+      title="Minha experiência até aqui."
+      description="O que tenho feito profissionalmente e um pouco da experiência que veio antes da área de tecnologia."
       className="experience-section"
     >
       <div className="experience-list">

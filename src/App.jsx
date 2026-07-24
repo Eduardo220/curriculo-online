@@ -5,7 +5,6 @@ import Footer from "./components/layout/Footer.jsx";
 import Hero from "./components/sections/Hero.jsx";
 import AboutSection from "./components/sections/AboutSection.jsx";
 import ExperienceSection from "./components/sections/ExperienceSection.jsx";
-import WayperSection from "./components/wayper/WayperSection.jsx";
 import ProjectsSection from "./components/sections/ProjectsSection.jsx";
 import StackSection from "./components/sections/StackSection.jsx";
 import EducationSection from "./components/sections/EducationSection.jsx";
@@ -28,7 +27,6 @@ export default function App() {
         <Hero />
         <AboutSection />
         <ExperienceSection />
-        <WayperSection />
         <ProjectsSection />
         <StackSection />
         <EducationSection />
@@ -37,7 +35,7 @@ export default function App() {
             <Section
               id="github"
               eyebrow="GitHub público"
-              title="Carregando a seleção de código público."
+              title="Carregando os projetos do GitHub."
               className="github-section"
             >
               <div className="github-loading" aria-label="Carregando dados do GitHub">

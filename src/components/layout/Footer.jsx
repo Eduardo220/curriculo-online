@@ -12,10 +12,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <p className="footer-note">
-          Construído com React e Vite. Sem rastreadores, sem telefone público e sem dados
-          confidenciais de projetos profissionais.
-        </p>
+        <p className="footer-note">Feito por mim com React e Vite.</p>
 
         <div className="footer-actions">
           <a href={profile.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
