@@ -18,6 +18,19 @@ const heroItems = {
   },
 };
 
+const activeWorkspaceCells = new Set([8, 9, 13, 14, 15, 16, 19, 20, 21]);
+
+const linkedWorkspaceCells = new Set([3, 4, 10, 17, 22, 27]);
+
+const workspaceCellLabels = new Map([
+  [8, "api"],
+  [14, "core"],
+  [16, "db"],
+  [20, "app"],
+]);
+
+const workspaceBoundary = "M2 1 H4 V2 H5 V3 H4 V4 H1 V2 H2 Z";
+
 export default function Hero() {
   const reduceMotion = useReducedMotion();
   const initial = reduceMotion ? false : "hidden";
@@ -87,28 +100,80 @@ export default function Hero() {
         >
           <div className="hero-system__header">
             <span>dev.workspace</span>
-            <i>online</i>
+            <i>branch / dev</i>
           </div>
 
           <div className="hero-system__map">
             <div className="hero-system__cells">
-              {Array.from({ length: 30 }, (_, index) => (
-                <span
-                  className={[7, 8, 12, 13, 14, 18, 19, 24].includes(index) ? "is-active" : ""}
-                  key={index}
+              {Array.from({ length: 30 }, (_, index) => {
+                const state = activeWorkspaceCells.has(index)
+                  ? "is-active"
+                  : linkedWorkspaceCells.has(index)
+                    ? "is-linked"
+                    : "";
+
+                return (
+                  <span className={state} key={index}>
+                    {workspaceCellLabels.has(index) ? (
+                      <small className="hero-system__cell-label">
+                        {workspaceCellLabels.get(index)}
+                      </small>
+                    ) : null}
+                  </span>
+                );
+              })}
+
+              <svg
+                className="hero-system__workspace"
+                viewBox="0 0 6 5"
+                preserveAspectRatio="none"
+                focusable="false"
+              >
+                <path
+                  className="hero-system__workspace-shadow"
+                  d={workspaceBoundary}
                 />
-              ))}
+                <path
+                  className="hero-system__workspace-glow"
+                  d={workspaceBoundary}
+                />
+                <motion.path
+                  className="hero-system__workspace-boundary"
+                  d={workspaceBoundary}
+                  initial={reduceMotion ? false : { opacity: 0, fillOpacity: 0 }}
+                  animate={reduceMotion ? undefined : { opacity: 1, fillOpacity: 1 }}
+                  transition={{ duration: 0.9, delay: 0.55, ease: "easeOut" }}
+                />
+                <circle
+                  className="hero-system__workspace-node hero-system__workspace-node--lime"
+                  cx="2"
+                  cy="1"
+                  r=".07"
+                />
+                <circle
+                  className="hero-system__workspace-node hero-system__workspace-node--blue"
+                  cx="5"
+                  cy="3"
+                  r=".07"
+                />
+                <circle
+                  className="hero-system__workspace-node hero-system__workspace-node--lime"
+                  cx="1"
+                  cy="4"
+                  r=".07"
+                />
+              </svg>
             </div>
-            <svg viewBox="0 0 420 260" focusable="false">
-              <motion.path
-                d="M18 224 C 82 192, 68 120, 142 144 S 230 196, 244 118 S 332 102, 402 28"
-                fill="none"
-                initial={reduceMotion ? false : { pathLength: 0 }}
-                animate={reduceMotion ? undefined : { pathLength: 1 }}
-                transition={{ duration: 2, delay: 0.6, ease: "easeInOut" }}
-              />
-            </svg>
-            <span className="hero-system__pulse" />
+
+            <div className="hero-system__map-readout">
+              <small>workspace.scope</small>
+              <strong>backend + mobile</strong>
+            </div>
+
+            <div className="hero-system__map-health">
+              <i />
+              <span>04 módulos ativos</span>
+            </div>
           </div>
 
           <div className="hero-system__pipeline">
