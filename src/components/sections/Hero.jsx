@@ -1,11 +1,11 @@
 import { motion, useReducedMotion } from "framer-motion";
 import {
+  ArrowDown,
   ContactRound,
   Download,
   GitBranch,
   Mail,
   MapPin,
-  RadioTower,
 } from "lucide-react";
 import Button from "../common/Button.jsx";
 import { profile } from "../../data/portfolio.js";
@@ -52,14 +52,14 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p className="hero-lead" variants={heroItems}>
-            Desenvolvo sistemas, integrações e aplicativos que precisam funcionar fora do ambiente
-            de demonstração. Trabalho com backend, APIs e processamento assíncrono — e construo o
-            Wayper, um app que transforma corridas em territórios usando GPS e mapas reais.
+            Sou desenvolvedor de software e trabalho principalmente com backend e aplicativos
+            mobile. Aqui reuni um pouco da minha experiência, das tecnologias que uso e dos
+            projetos que construo.
           </motion.p>
 
           <motion.div className="hero-actions" variants={heroItems}>
-            <Button href="#wayper" icon={RadioTower}>
-              Conhecer o Wayper
+            <Button href="#projetos" icon={ArrowDown}>
+              Ver projetos
             </Button>
             <Button href={profile.githubUrl} icon={GitBranch} variant="secondary">
               GitHub
@@ -86,7 +86,7 @@ export default function Hero() {
           transition={{ duration: 0.72, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="hero-system__header">
-            <span>operation.trace</span>
+            <span>dev.workspace</span>
             <i>online</i>
           </div>
 
@@ -114,11 +114,11 @@ export default function Hero() {
           <div className="hero-system__pipeline">
             <span>API</span>
             <i />
-            <span>Worker</span>
+            <span>Serviço</span>
             <i />
-            <span>Queue</span>
+            <span>Mobile</span>
             <i />
-            <span>Data</span>
+            <span>Dados</span>
           </div>
 
           <div className="hero-system__metrics">
@@ -127,12 +127,12 @@ export default function Hero() {
               <strong>Venddor</strong>
             </div>
             <div>
-              <small>produto próprio</small>
-              <strong>Wayper</strong>
+              <small>backend</small>
+              <strong>C# e .NET</strong>
             </div>
             <div>
-              <small>foco</small>
-              <strong>sistemas reais</strong>
+              <small>mobile</small>
+              <strong>React Native</strong>
             </div>
           </div>
         </motion.div>

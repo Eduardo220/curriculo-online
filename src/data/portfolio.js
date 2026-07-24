@@ -4,7 +4,7 @@ import cvFile from "../../Assets/Curriculo.pdf";
 export const profile = {
   name: "Eduardo Weissheimer",
   role: "Desenvolvedor de Software",
-  specialty: "Backend, aplicativos e integrações",
+  specialty: "Backend e desenvolvimento mobile",
   location: "Balneário Arroio do Silva, SC, Brasil",
   email: "eduardo.weissheimer22@gmail.com",
   githubUsername: "Eduardo220",
@@ -15,9 +15,9 @@ export const profile = {
 };
 
 export const navItems = [
-  { label: "Sobre", href: "#sobre", id: "sobre" },
+  { label: "Início", href: "#top", id: "top" },
+  { label: "Sobre mim", href: "#sobre", id: "sobre" },
   { label: "Experiência", href: "#experiencia", id: "experiencia" },
-  { label: "Wayper", href: "#wayper", id: "wayper" },
   { label: "Projetos", href: "#projetos", id: "projetos" },
   { label: "Stack", href: "#stack", id: "stack" },
   { label: "GitHub", href: "#github", id: "github" },
@@ -27,18 +27,18 @@ export const navItems = [
 export const workingPrinciples = [
   {
     code: "01",
-    title: "Investigar antes de corrigir",
-    text: "Logs, mensagens em filas e dados no banco ajudam a reconstruir o fluxo antes de qualquer mudança.",
+    title: "Entender antes de mexer",
+    text: "Antes de corrigir, gosto de olhar os dados e acompanhar o caminho completo do problema.",
   },
   {
     code: "02",
-    title: "Entender a regra de negócio",
-    text: "Pedidos, pagamentos e sincronizações só ficam confiáveis quando o comportamento esperado está claro.",
+    title: "Entender a regra",
+    text: "O código fica mais simples quando está claro o que o sistema realmente precisa fazer.",
   },
   {
     code: "03",
-    title: "Pensar no produto inteiro",
-    text: "No Wayper, isso conecta interface, GPS, persistência, mapas, sincronização e experiência de uso.",
+    title: "Aprender construindo",
+    text: "Projetos próprios são onde testo ideias, conheço ferramentas novas e coloco o aprendizado em prática.",
   },
 ];
 
@@ -49,31 +49,31 @@ export const experiences = [
     period: "Atual",
     current: true,
     summary:
-      "Desenvolvimento e manutenção de aplicativos, APIs, workers, microsserviços e integrações usadas em operações digitais e de e-commerce.",
+      "Desenvolvimento e manutenção de APIs, serviços e aplicativos mobile usados em operações digitais e de e-commerce.",
     groups: [
       {
-        title: "Desenvolvimento",
+        title: "Backend",
         items: [
-          "Serviços em C# e .NET, APIs REST, workers e manutenção de microsserviços.",
-          "Correções em fluxos de pedidos, pagamentos, produtos e clientes.",
+          "Desenvolvimento de serviços em C# e .NET, APIs REST, workers e microsserviços.",
+          "Manutenção e correção de fluxos ligados a pedidos, pagamentos, produtos e clientes.",
         ],
       },
       {
-        title: "Integrações e processamento",
+        title: "Mobile",
         items: [
-          "Processamento assíncrono com RabbitMQ e integração com Magento e ERPs.",
-          "Integrações com Bling, Tiny e Sienge, respeitando regras distintas entre plataformas.",
+          "Desenvolvimento e manutenção de sistemas mobile com React Native.",
+          "Ajustes em telas, fluxos e consumo de APIs nos aplicativos.",
         ],
       },
       {
         title: "Operação e diagnóstico",
         items: [
-          "Investigação de incidentes por logs, filas, banco de dados e comportamento entre tenants.",
-          "Análise de causa, correção cuidadosa e prevenção de regressões em sistemas em uso.",
+          "Investigação de problemas por logs, banco de dados e comportamento da aplicação.",
+          "Análise da causa, correção e cuidado para não gerar regressões em sistemas em uso.",
         ],
       },
     ],
-    tools: ["C#", ".NET", "APIs REST", "RabbitMQ", "SQL Server", "Docker", "Azure DevOps"],
+    tools: ["C#", ".NET", "APIs REST", "Mobile", "React Native", "SQL Server", "Docker"],
   },
   {
     company: "Exército Brasileiro",
@@ -81,13 +81,13 @@ export const experiences = [
     period: "2023 — fev 2025",
     current: false,
     summary:
-      "Experiência em ambiente operacional estruturado, com responsabilidade sobre rotinas, materiais, documentação e execução de tarefas sob pressão.",
+      "Antes de entrar de vez na área de tecnologia, servi no Exército Brasileiro. Foi uma experiência com muita rotina, responsabilidade e trabalho em equipe.",
     groups: [
       {
-        title: "Contexto",
+        title: "O que ficou dessa experiência",
         items: [
-          "Organização de processos e documentação em uma operação com hierarquia e responsabilidades claras.",
-          "Comunicação, disciplina e cuidado na execução de tarefas com impacto sobre outras pessoas.",
+          "Organização e responsabilidade no cuidado com materiais, documentos e tarefas do dia a dia.",
+          "Comunicação clara, disciplina e calma para trabalhar sob pressão.",
         ],
       },
     ],
@@ -97,16 +97,15 @@ export const experiences = [
 
 export const wayper = {
   name: "Wayper",
-  label: "Produto próprio · em desenvolvimento ativo",
+  label: "Projeto pessoal · em desenvolvimento",
   githubUrl: "https://github.com/Eduardo220/wayper",
-  summary:
-    "Aplicativo mobile de corrida gamificada que transforma trajetos reais em territórios conquistados no mapa.",
+  summary: "Um app de corrida em que o trajeto vira território no mapa.",
   description:
-    "Durante uma atividade, o Wayper coleta e processa pontos de localização, acompanha métricas da corrida e usa dados geoespaciais para representar as áreas percorridas. O projeto combina produto mobile, GPS, mapas, persistência local e sincronização com backend.",
+    "O Wayper nasceu de uma ideia simples: deixar a corrida mais divertida. É também o projeto em que mais tenho explorado React Native, GPS, mapas, funcionamento offline e Firebase.",
   problem:
-    "Registrar uma corrida já exige lidar com localização imprecisa, interrupções e uso em segundo plano. Transformar esse trajeto em território adiciona validação geoespacial, consistência de estado, competição e proteção contra dados suspeitos.",
+    "A ideia parece simples, mas o GPS nem sempre entrega pontos precisos e a corrida pode ser interrompida a qualquer momento. Além de registrar o trajeto, o app precisa manter o estado e decidir quais dados são confiáveis.",
   solution:
-    "O app separa pontos brutos, confiáveis e de renderização; filtra leituras ruins, preserva a atividade localmente, sincroniza quando a rede volta e aplica regras próprias para formar e validar territórios.",
+    "Hoje o app separa os pontos brutos dos pontos usados nos cálculos e no mapa, filtra leituras ruins, salva a atividade no aparelho e sincroniza os dados quando a conexão volta.",
   capabilities: [
     "Registro de corridas com distância, tempo, ritmo e velocidade",
     "Rastreamento foreground e background com Expo Location",
@@ -119,51 +118,51 @@ export const wayper = {
     {
       code: "01",
       title: "Captura",
-      text: "Expo Location e Task Manager recebem pontos em primeiro e segundo plano.",
+      text: "Expo Location e Task Manager recebem os pontos em primeiro e segundo plano.",
     },
     {
       code: "02",
-      title: "Confiança",
-      text: "Filtros avaliam precisão, ordem, saltos, velocidade e localização simulada.",
+      title: "Validação",
+      text: "Os filtros conferem precisão, ordem, saltos, velocidade e localização simulada.",
     },
     {
       code: "03",
-      title: "Persistência",
-      text: "AsyncStorage preserva corridas, estado ativo, territórios e itens ainda não sincronizados.",
+      title: "Dados locais",
+      text: "AsyncStorage mantém a corrida ativa, os territórios e o que ainda precisa ser enviado.",
     },
     {
       code: "04",
       title: "Sincronização",
-      text: "NetInfo, retries e backoff coordenam o envio ao Firestore quando há conectividade.",
+      text: "Quando a conexão volta, o app tenta enviar os dados pendentes ao Firestore.",
     },
   ],
   engineering: [
     {
       title: "Rota confiável",
-      text: "O tracking mantém trilhas bruta, filtrada e visual. A suavização melhora a leitura sem alterar os pontos usados nos cálculos.",
+      text: "O rastreamento mantém trilhas bruta, filtrada e visual. Assim, o mapa pode ficar mais legível sem alterar os cálculos.",
     },
     {
       title: "Continuidade da corrida",
-      text: "A atividade ativa é persistida, o serviço mantém uma fila de corridas pendentes e tenta recuperar o estado após interrupções.",
+      text: "A atividade fica salva no aparelho para que o estado possa ser recuperado depois de uma interrupção.",
     },
     {
       title: "Território geoespacial",
-      text: "Turf apoia a construção e validação de geometria, área, células e interações entre territórios.",
+      text: "Turf ajuda a montar e validar as áreas, as células e as interações entre territórios.",
     },
     {
       title: "Proteção contra fraude GPS",
-      text: "As regras rejeitam localização simulada, saltos, velocidade impossível, baixa precisão e atividades insuficientes.",
+      text: "As regras descartam localização simulada, saltos, velocidade impossível e pontos com baixa precisão.",
     },
   ],
   nextSteps: [
-    "Medir consumo de bateria e estabilidade em corridas longas em diferentes aparelhos.",
-    "Conectar a persistência do cache do React Query já prevista nas dependências.",
-    "Adicionar observabilidade centralizada para falhas e diagnósticos fora do ambiente local.",
+    "Medir melhor o consumo de bateria em corridas longas e em aparelhos diferentes.",
+    "Aprimorar a persistência dos dados usados pelo React Query.",
+    "Melhorar o acompanhamento de falhas fora do ambiente local.",
   ],
   learnings: [
-    "Dados de GPS precisam ser tratados como sinais imperfeitos, não como verdade absoluta.",
-    "Offline-first exige decidir o que é fonte de verdade e como conflitos serão reconciliados.",
-    "A rota usada para cálculo não precisa ser a mesma curva apresentada visualmente no mapa.",
+    "GPS é um sinal imperfeito e precisa ser validado antes de entrar nos cálculos.",
+    "Trabalhar offline exige deixar claro qual dado vale quando aparece um conflito.",
+    "A rota usada nos cálculos não precisa ser igual à curva mostrada no mapa.",
   ],
   technologies: [
     "React Native",
@@ -185,11 +184,11 @@ export const wayper = {
 export const projects = [
   {
     name: "Banco Laravel",
-    label: "Projeto público · estudo aplicado",
-    status: "Funcional, sem demo publicada",
+    label: "Projeto de estudo · código público",
+    status: "Código disponível, sem demo publicada",
     githubUrl: "https://github.com/Eduardo220/Banco_Laravel",
     context:
-      "Aplicação web bancária experimental criada para praticar modelagem, autenticação e regras de movimentação financeira.",
+      "Uma aplicação bancária que fiz para praticar Laravel, modelagem de dados, autenticação e regras de movimentação financeira.",
     problem:
       "Organizar usuários, contas corrente e poupança, saldo e histórico de operações sem espalhar as regras por toda a aplicação.",
     solution:
@@ -197,7 +196,7 @@ export const projects = [
     responsibility:
       "Implementação da aplicação, modelagem relacional, autenticação, regras de conta, views Blade e registros de auditoria.",
     result:
-      "Um projeto de estudo que consolidou regras de negócio, relacionamentos de dados e organização de uma aplicação backend renderizada no servidor.",
+      "O projeto me ajudou a consolidar regras de negócio, relacionamentos de dados e a organização de uma aplicação backend renderizada no servidor.",
     technologies: ["PHP 8.2", "Laravel 12", "Eloquent", "Blade", "Laravel Auditing"],
   },
 ];
@@ -206,32 +205,26 @@ export const stackGroups = [
   {
     title: "Backend",
     code: "core.services",
-    description: "Serviços, contratos HTTP, regras de negócio e processamento fora da requisição.",
+    description: "APIs, serviços, regras de negócio e processamento em segundo plano.",
     items: ["C#", ".NET", "ASP.NET", "APIs REST", "Workers", "Microsserviços"],
-  },
-  {
-    title: "Integrações",
-    code: "systems.connect",
-    description: "Fluxos entre e-commerce, ERPs e serviços que operam de forma assíncrona.",
-    items: ["RabbitMQ", "Webhooks", "Magento", "Bling", "Tiny", "Sienge"],
   },
   {
     title: "Dados",
     code: "state.persist",
-    description: "Persistência, consultas, análise operacional e dados locais de aplicativos.",
-    items: ["SQL Server", "Firestore", "AsyncStorage", "Modelagem", "Análise de consultas"],
+    description: "Banco relacional, dados remotos e persistência local nos aplicativos.",
+    items: ["SQL Server", "Firestore", "AsyncStorage", "Modelagem", "Consultas SQL"],
   },
   {
-    title: "Mobile e frontend",
+    title: "Mobile e front",
     code: "product.interface",
-    description: "Aplicativos e interfaces conectados a mapas, localização e produto.",
+    description: "Aplicativos, interfaces, mapas e recursos de localização.",
     items: ["React Native", "Expo", "React", "JavaScript", "MapLibre", "Geolocalização"],
   },
   {
     title: "Entrega e diagnóstico",
     code: "ship.observe",
-    description: "Ferramentas usadas para versionar, empacotar, entregar e investigar sistemas.",
-    items: ["Docker", "Git", "GitHub", "Azure DevOps", "Logs", "Firebase"],
+    description: "Versionamento, ambiente, entrega e investigação de problemas.",
+    items: ["Docker", "Git", "GitHub", "Logs", "Debug", "Firebase"],
   },
 ];
 
@@ -239,7 +232,6 @@ export const education = {
   degree: "Análise e Desenvolvimento de Sistemas",
   institution: "UNINTER",
   period: "2022 — em andamento",
-  note: "Período e status obtidos no currículo atual; devem ser revisados quando houver atualização acadêmica.",
   complementary: [
     "Formação PHP Experience · DIO",
     "Git e GitHub Essentials · DIO",

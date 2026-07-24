@@ -4,7 +4,6 @@ import {
   GitBranch,
   RadioTower,
 } from "lucide-react";
-import Section from "../common/Section.jsx";
 import Button from "../common/Button.jsx";
 import TagList from "../common/TagList.jsx";
 import WayperVisual from "./WayperVisual.jsx";
@@ -12,13 +11,17 @@ import { wayper } from "../../data/portfolio.js";
 
 export default function WayperSection() {
   return (
-    <Section
+    <section
       id="wayper"
-      eyebrow="Projeto principal"
-      title="Wayper: corrida real, território digital."
-      description="Não é uma interface de demonstração. É um produto mobile em desenvolvimento que precisa lidar com sensores imperfeitos, interrupções, estado local, mapas e dados remotos."
-      className="wayper-section"
+      className="wayper-project"
+      aria-labelledby="wayper-project-title"
     >
+      <header className="project-group-heading">
+        <span className="eyebrow">Projeto em destaque</span>
+        <h3 id="wayper-project-title">{wayper.name}</h3>
+        <p>É o projeto pessoal em que mais tenho trabalhado hoje.</p>
+      </header>
+
       <article className="wayper-showcase">
         <div className="wayper-showcase__visual">
           <WayperVisual />
@@ -29,14 +32,14 @@ export default function WayperSection() {
             <i />
             {wayper.label}
           </span>
-          <h3>{wayper.summary}</h3>
+          <h4>{wayper.summary}</h4>
           <p>{wayper.description}</p>
           <div className="wayper-showcase__actions">
             <Button href={wayper.githubUrl} icon={GitBranch}>
               Ver código no GitHub
             </Button>
             <a className="text-link" href="#arquitetura-wayper">
-              Explorar arquitetura <ArrowUpRight size={15} aria-hidden="true" />
+              Como ele funciona <ArrowUpRight size={15} aria-hidden="true" />
             </a>
           </div>
         </div>
@@ -44,21 +47,21 @@ export default function WayperSection() {
 
       <div className="case-study-grid">
         <article>
-          <span className="case-study-grid__code">problem.statement</span>
-          <h3>O problema</h3>
+          <span className="case-study-grid__code">contexto</span>
+          <h4>A parte difícil</h4>
           <p>{wayper.problem}</p>
         </article>
         <article>
-          <span className="case-study-grid__code">solution.approach</span>
-          <h3>A solução em construção</h3>
+          <span className="case-study-grid__code">estado atual</span>
+          <h4>Como estou resolvendo</h4>
           <p>{wayper.solution}</p>
         </article>
       </div>
 
       <div className="wayper-architecture" id="arquitetura-wayper">
         <header>
-          <span className="eyebrow">Arquitetura</span>
-          <h3>Do sensor ao território, cada etapa tem uma responsabilidade.</h3>
+          <span className="eyebrow">Por dentro do projeto</span>
+          <h4>Como os dados passam pelo app.</h4>
         </header>
 
         <ol>
@@ -66,7 +69,7 @@ export default function WayperSection() {
             <li key={step.code}>
               <span>{step.code}</span>
               <div>
-                <h4>{step.title}</h4>
+                <h5>{step.title}</h5>
                 <p>{step.text}</p>
               </div>
             </li>
@@ -77,8 +80,8 @@ export default function WayperSection() {
       <div className="wayper-details">
         <article className="wayper-capabilities">
           <header>
-            <span className="eyebrow">Produto</span>
-            <h3>Funcionalidades presentes no código</h3>
+            <span className="eyebrow">O que já funciona</span>
+            <h4>O que já está no projeto</h4>
           </header>
           <ul>
             {wayper.capabilities.map((capability) => (
@@ -92,14 +95,14 @@ export default function WayperSection() {
 
         <article className="wayper-engineering">
           <header>
-            <span className="eyebrow">Engenharia</span>
-            <h3>Decisões que sustentam a experiência</h3>
+            <span className="eyebrow">Parte técnica</span>
+            <h4>Algumas decisões do projeto</h4>
           </header>
           <div>
             {wayper.engineering.map((item) => (
               <section key={item.title}>
                 <RadioTower size={18} aria-hidden="true" />
-                <h4>{item.title}</h4>
+                <h5>{item.title}</h5>
                 <p>{item.text}</p>
               </section>
             ))}
@@ -109,8 +112,8 @@ export default function WayperSection() {
 
       <div className="wayper-evolution">
         <article>
-          <span className="eyebrow">Próximas etapas técnicas</span>
-          <h3>Riscos tratados como trabalho, não como promessa.</h3>
+          <span className="eyebrow">Próximos passos</span>
+          <h4>O que quero melhorar</h4>
           <ul>
             {wayper.nextSteps.map((step) => (
               <li key={step}>{step}</li>
@@ -119,7 +122,7 @@ export default function WayperSection() {
         </article>
         <article>
           <span className="eyebrow">Aprendizados</span>
-          <h3>O que o projeto já tornou concreto.</h3>
+          <h4>O que aprendi até aqui</h4>
           <ul>
             {wayper.learnings.map((learning) => (
               <li key={learning}>{learning}</li>
@@ -130,13 +133,11 @@ export default function WayperSection() {
 
       <footer className="wayper-stack">
         <div>
-          <span className="eyebrow">Stack verificada no repositório</span>
-          <p>
-            Tecnologias listadas apenas quando aparecem nas dependências e na implementação atual.
-          </p>
+          <span className="eyebrow">Tecnologias usadas</span>
+          <p>A stack atual do projeto.</p>
         </div>
-        <TagList items={wayper.technologies} label="Tecnologias verificadas no Wayper" />
+        <TagList items={wayper.technologies} label="Tecnologias usadas no Wayper" />
       </footer>
-    </Section>
+    </section>
   );
 }

@@ -2,7 +2,6 @@ import {
   Boxes,
   Braces,
   Database,
-  PlugZap,
   SearchCheck,
 } from "lucide-react";
 import Section from "../common/Section.jsx";
@@ -11,9 +10,8 @@ import { stackGroups } from "../../data/portfolio.js";
 
 const icons = {
   Backend: Braces,
-  Integrações: PlugZap,
   Dados: Database,
-  "Mobile e frontend": Boxes,
+  "Mobile e front": Boxes,
   "Entrega e diagnóstico": SearchCheck,
 };
 
@@ -21,9 +19,9 @@ export default function StackSection() {
   return (
     <Section
       id="stack"
-      eyebrow="Stack e capacidades"
-      title="Tecnologia organizada pelo trabalho que ela resolve."
-      description="Sem parede de logos e sem ferramentas listadas por aparência. Cada grupo representa um contexto em que a tecnologia foi usada."
+      eyebrow="Stack"
+      title="Tecnologias que uso no dia a dia."
+      description="Separei por área para ficar mais fácil de entender onde cada uma entra."
       className="stack-section"
     >
       <div className="stack-list">

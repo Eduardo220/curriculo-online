@@ -45,7 +45,7 @@ export default function Header() {
           <span className="brand__mark">EW</span>
           <span className="brand__copy">
             <strong>Eduardo W.</strong>
-            <small>software / backend</small>
+            <small>backend / mobile</small>
           </span>
         </a>
 
@@ -63,7 +63,7 @@ export default function Header() {
         </nav>
 
         <a className="header-contact" href={`mailto:${profile.email}`}>
-          Conversar <ArrowUpRight size={15} aria-hidden="true" />
+          Contato <ArrowUpRight size={15} aria-hidden="true" />
         </a>
 
         <button

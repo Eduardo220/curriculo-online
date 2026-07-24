@@ -9,8 +9,8 @@ export default function AboutSection() {
     <Section
       id="sobre"
       eyebrow="Sobre mim"
-      title="Código é uma parte do problema. O fluxo inteiro também importa."
-      description="Minha base está em backend e integrações, mas o trabalho começa antes da implementação: entender o que falhou, quem depende daquele fluxo e qual comportamento precisa ser preservado."
+      title="Um pouco sobre mim."
+      description="Sou desenvolvedor de software com foco em backend e mobile. Gosto de entender o problema por inteiro antes de começar a mexer no código."
       className="about-section"
     >
       <div className="about-layout">
@@ -33,22 +33,17 @@ export default function AboutSection() {
 
         <div className="about-copy">
           <p>
-            Hoje atuo no desenvolvimento e na sustentação de aplicativos, APIs, workers,
-            microsserviços e integrações usadas em operações de e-commerce. Isso inclui construir
-            novos fluxos, mas também investigar os que já estão rodando: logs, mensagens em filas,
-            dados no banco e diferenças de comportamento entre tenants.
+            Hoje trabalho na Venddor com APIs, serviços e aplicativos mobile usados em operações
+            de e-commerce. Além de desenvolver novas partes do sistema, também faço manutenção e
+            investigo problemas que aparecem no dia a dia.
           </p>
           <p>
-            Gosto especialmente desse trabalho de reconstruir o caminho de um problema. Uma falha
-            em pedido, pagamento ou sincronização raramente termina na primeira exceção encontrada;
-            é preciso entender a regra, a sequência de eventos e o efeito da correção sobre o
-            restante do sistema.
+            Gosto bastante dessa parte mais investigativa: olhar logs, conferir dados, entender a
+            regra de negócio e acompanhar o fluxo até encontrar a causa.
           </p>
           <p>
-            O Wayper amplia esse aprendizado para produto mobile. Nele, cuido da experiência e de
-            problemas como GPS impreciso, execução em segundo plano, persistência offline, mapas e
-            sincronização — escolhas que só aparecem quando o aplicativo precisa sobreviver ao uso
-            fora do ambiente de desenvolvimento.
+            Fora do trabalho, mantenho projetos próprios para estudar e testar ideias. É onde
+            consigo juntar backend, mobile e outras tecnologias que tenho vontade de explorar.
           </p>
         </div>
       </div>

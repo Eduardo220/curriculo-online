@@ -7,8 +7,8 @@ export default function EducationSection() {
     <Section
       id="formacao"
       eyebrow="Formação"
-      title="Base acadêmica e estudos complementares."
-      description="Informações mantidas de forma objetiva e limitadas ao que consta no currículo disponível."
+      title="Formação e cursos."
+      description="Minha graduação e alguns cursos que complementam o que uso no dia a dia."
       className="education-section"
     >
       <div className="education-layout">
@@ -27,7 +27,7 @@ export default function EducationSection() {
         <article className="courses-card">
           <header>
             <BookOpen size={20} aria-hidden="true" />
-            <h3>Formação complementar selecionada</h3>
+            <h3>Cursos complementares</h3>
           </header>
           <ul>
             {education.complementary.map((course) => (
@@ -36,7 +36,6 @@ export default function EducationSection() {
           </ul>
         </article>
       </div>
-      <p className="education-source">{education.note}</p>
     </Section>
   );
 }

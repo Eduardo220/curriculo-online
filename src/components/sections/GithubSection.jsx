@@ -77,9 +77,9 @@ export default function GithubSection() {
   return (
     <Section
       id="github"
-      eyebrow="GitHub público"
-      title="Código aberto como apoio, não como placar."
-      description="A seção prioriza repositórios selecionados e linguagens desses projetos. A API usa cache, timeout e fallback para que uma falha externa nunca quebre a página."
+      eyebrow="GitHub"
+      title="Alguns repositórios do meu GitHub."
+      description="Aqui ficam os projetos públicos que escolhi destacar."
       className="github-section"
     >
       <div className="github-overview">
@@ -112,7 +112,7 @@ export default function GithubSection() {
             </dl>
           ) : (
             <p className="github-fallback-copy">
-              Os links verificados continuam disponíveis mesmo sem resposta da API.
+              Não consegui atualizar os dados agora, mas os links continuam disponíveis.
             </p>
           )}
 
@@ -141,8 +141,7 @@ export default function GithubSection() {
           ) : (
             <div className="language-empty">
               <p>
-                A distribuição de linguagens aparece quando a API está disponível. O conteúdo
-                editorial não depende dela.
+                A distribuição de linguagens aparece quando os dados do GitHub estão disponíveis.
               </p>
             </div>
           )}
