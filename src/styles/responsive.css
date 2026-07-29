@@ -1,0 +1,96 @@
+@media (min-width: 48rem) {
+  .section-heading {
+    margin-bottom: clamp(4rem, 7vw, 7rem);
+  }
+}
+
+@media (max-width: 30rem) {
+  .global-background__coordinates {
+    display: none;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .button:active,
+  .text-link:active,
+  .footer-actions a:active {
+    background-color: var(--lime-wash);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .global-background__route,
+  .global-background__noise,
+  .custom-cursor,
+  .hero-cinematic__scroll {
+    display: none !important;
+  }
+
+  .global-background__aurora,
+  .global-background__grid,
+  .global-background__topography {
+    transform: none !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .button,
+  .tag-list li,
+  .menu-toggle,
+  .footer-actions a {
+    border: 1px solid CanvasText;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus {
+    outline: 2px solid Highlight;
+    outline-offset: 3px;
+  }
+
+  .global-background,
+  .custom-cursor {
+    display: none;
+  }
+}
+
+@media print {
+  .site-header,
+  .global-background,
+  .hero-cinematic__visual,
+  .hero-cinematic__scroll,
+  .contact-form,
+  .custom-cursor,
+  .site-footer,
+  canvas {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: white;
+    color: black;
+  }
+
+  .section,
+  .hero-cinematic {
+    min-height: auto;
+    padding-block: 2rem;
+  }
+
+  a {
+    color: inherit;
+  }
+}

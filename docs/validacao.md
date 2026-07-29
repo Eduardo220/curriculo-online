@@ -1,4 +1,6 @@
-# Validação final
+# Validação histórica anterior à reformulação
+
+Este arquivo registra a versão de 23 de julho de 2026. A validação da experiência 3D e de motion está em [`visual-motion-validation.md`](visual-motion-validation.md).
 
 Validação executada em 23 de julho de 2026 sobre o build de produção servido por `vite preview`.
 

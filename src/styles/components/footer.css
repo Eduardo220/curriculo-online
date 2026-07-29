@@ -1,0 +1,63 @@
+.site-footer {
+  padding-block: 2.5rem max(2.5rem, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  background: rgba(3, 5, 4, 0.92);
+}
+
+.footer-grid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.footer-mark {
+  display: inline-flex;
+  color: var(--lime-400);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.footer-grid > div:first-child p,
+.footer-note {
+  margin-top: 0.45rem;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+.footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.footer-actions a {
+  display: grid;
+  width: 2.85rem;
+  height: 2.85rem;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--text-soft);
+  transition:
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease,
+    background-color var(--duration-fast) ease;
+}
+
+.footer-actions a:hover {
+  border-color: var(--line-lime);
+  background: var(--lime-wash);
+  color: var(--lime-300);
+}
+
+@media (min-width: 48rem) {
+  .footer-grid {
+    grid-template-columns: 1fr 1.2fr auto;
+    gap: 2rem;
+  }
+
+  .footer-note {
+    margin-top: 0;
+  }
+}

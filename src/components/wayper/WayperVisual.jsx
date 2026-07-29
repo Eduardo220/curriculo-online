@@ -1,99 +1,153 @@
-import { motion, useReducedMotion } from "framer-motion";
-import { CloudOff, LocateFixed, RefreshCw } from "lucide-react";
+import {
+  Component,
+  Suspense,
+  lazy,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import WayperFallback from "./WayperFallback.jsx";
 
-const activeCells = new Set([
-  10, 11, 18, 19, 20, 26, 27, 28, 29, 35, 36, 37, 43, 44, 45, 51, 52,
-]);
+const LazyWayperCanvas = lazy(() => import("./WayperCanvas.jsx"));
 
-const territoryPath =
-  "M208 88 H392 Q412 88 412 108 V168 Q412 188 432 188 H492 Q512 188 512 208 V268 Q512 288 532 288 H592 Q612 288 612 308 V592 Q612 612 592 612 H532 Q512 612 512 632 V692 Q512 712 492 712 H308 Q288 712 288 692 V432 Q288 412 268 412 H208 Q188 412 188 392 V108 Q188 88 208 88 Z";
+class WayperSceneBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { failed: false };
+  }
 
-export default function WayperVisual() {
-  const reduceMotion = useReducedMotion();
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  componentDidCatch(error) {
+    this.props.onError?.(error);
+  }
+
+  render() {
+    if (this.state.failed) return this.props.fallback;
+    return this.props.children;
+  }
+}
+
+function useSceneActivity(rootRef) {
+  const [viewportState, setViewportState] = useState(
+    () => {
+      const observerUnavailable =
+        typeof window === "undefined" || !("IntersectionObserver" in window);
+      return {
+        inViewport: observerUnavailable,
+        activated: observerUnavailable,
+      };
+    },
+  );
+  const [pageVisible, setPageVisible] = useState(
+    () => typeof document === "undefined" || document.visibilityState !== "hidden",
+  );
+
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root || !("IntersectionObserver" in window)) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setViewportState((current) => ({
+          inViewport: entry.isIntersecting,
+          activated: current.activated || entry.isIntersecting,
+        }));
+      },
+      { rootMargin: "240px 0px", threshold: 0.01 },
+    );
+    observer.observe(root);
+    return () => observer.disconnect();
+  }, [rootRef]);
+
+  useEffect(() => {
+    const updateVisibility = () => setPageVisible(document.visibilityState !== "hidden");
+    document.addEventListener("visibilitychange", updateVisibility);
+    return () => document.removeEventListener("visibilitychange", updateVisibility);
+  }, []);
+
+  return {
+    active: viewportState.inViewport && pageVisible,
+    activated: viewportState.activated,
+  };
+}
+
+export default function WayperVisual({
+  activeChapter = 0,
+  performance,
+  sceneStateRef,
+}) {
+  const rootRef = useRef(null);
+  const [contextLost, setContextLost] = useState(false);
+  const { active: sceneActive, activated: sceneActivated } = useSceneActivity(rootRef);
+  const {
+    quality = "medium",
+    webgl = true,
+    reducedMotion = false,
+    isTouch = false,
+    dpr = 1,
+  } = performance ?? {};
+  const fallbackRequired =
+    contextLost || !webgl || reducedMotion || quality === "low" || quality === "reduced";
+
+  const resetPointer = useCallback(() => {
+    if (!sceneStateRef?.current) return;
+    sceneStateRef.current.pointerX = 0;
+    sceneStateRef.current.pointerY = 0;
+  }, [sceneStateRef]);
+
+  const updatePointer = useCallback(
+    (event) => {
+      if (!sceneStateRef?.current || reducedMotion) return;
+      if (isTouch && event.type === "pointermove") return;
+
+      const bounds = event.currentTarget.getBoundingClientRect();
+      sceneStateRef.current.pointerX = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
+      sceneStateRef.current.pointerY = -(((event.clientY - bounds.top) / bounds.height) * 2 - 1);
+    },
+    [isTouch, reducedMotion, sceneStateRef],
+  );
 
   return (
     <div
-      className="wayper-map"
+      className="wayper-visual-frame"
+      ref={rootRef}
       role="img"
-      aria-label="Representação abstrata de um território conquistado e contornado no mapa"
+      aria-label="Cena tridimensional demonstrativa do Wayper. Um celular exibe uma rota de corrida que fecha e eleva um território antes de representar a sincronização dos dados."
+      onPointerDown={isTouch ? updatePointer : undefined}
+      onPointerLeave={resetPointer}
+      onPointerMove={!isTouch ? updatePointer : undefined}
+      onPointerUp={isTouch ? resetPointer : undefined}
     >
-      <div className="wayper-map__topography" aria-hidden="true" />
-      <div className="wayper-map__streets" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
-
-      <div className="wayper-map__cells" aria-hidden="true">
-        {Array.from({ length: 64 }, (_, index) => (
-          <motion.span
-            className={activeCells.has(index) ? "is-captured" : ""}
-            key={index}
-            initial={false}
-            animate={
-              !reduceMotion && activeCells.has(index)
-                ? { opacity: [0.28, 0.78, 0.48] }
-                : undefined
-            }
-            transition={{
-              duration: 3.8,
-              delay: (index % 8) * 0.09,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          />
-        ))}
-      </div>
-
-      <svg
-        className="wayper-map__territory"
-        viewBox="0 0 800 800"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <path
-          className="wayper-map__territory-shadow"
-          d={territoryPath}
+      {fallbackRequired ? (
+        <WayperFallback
+          activeChapter={reducedMotion ? 6 : activeChapter}
+          reason={contextLost ? "context-lost" : reducedMotion ? "reduced-motion" : "capability"}
         />
-        <motion.path
-          d={territoryPath}
-          initial={reduceMotion ? false : { pathLength: 0 }}
-          whileInView={reduceMotion ? undefined : { pathLength: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 2.4, delay: 0.25, ease: "easeInOut" }}
-        />
-      </svg>
-
-      <span className="wayper-map__gps" aria-hidden="true">
-        <LocateFixed size={20} />
+      ) : sceneActivated ? (
+        <WayperSceneBoundary
+          fallback={<WayperFallback activeChapter={activeChapter} reason="render-error" />}
+        >
+          <Suspense fallback={<WayperFallback activeChapter={activeChapter} reason="loading" />}>
+            <LazyWayperCanvas
+              active={sceneActive}
+              activeChapter={activeChapter}
+              dpr={dpr}
+              onContextLost={() => setContextLost(true)}
+              quality={quality}
+              stateRef={sceneStateRef}
+            />
+          </Suspense>
+        </WayperSceneBoundary>
+      ) : (
+        <WayperFallback activeChapter={activeChapter} reason="standby" />
+      )}
+      <span className="wayper-visually-hidden">
+        Os sete capítulos ao lado descrevem em texto todo o conteúdo representado na cena.
       </span>
-
-      <div className="wayper-map__metric wayper-map__metric--distance" aria-hidden="true">
-        <small>território</small>
-        <strong>área ativa</strong>
-        <span>limite registrado</span>
-      </div>
-
-      <div className="wayper-map__metric wayper-map__metric--sync" aria-hidden="true">
-        <RefreshCw size={15} />
-        <span>área salva</span>
-        <i>ok</i>
-      </div>
-
-      <div className="wayper-map__metric wayper-map__metric--offline" aria-hidden="true">
-        <CloudOff size={15} />
-        <span>funciona offline</span>
-      </div>
-
-      <div className="wayper-map__legend" aria-hidden="true">
-        <span>
-          <i className="is-lime" /> conquistado
-        </span>
-        <span>
-          <i className="is-blue" /> sincronizado
-        </span>
-      </div>
     </div>
   );
 }

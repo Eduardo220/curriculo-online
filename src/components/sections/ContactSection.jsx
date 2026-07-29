@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ContactRound,
   Download,
@@ -15,11 +15,14 @@ const statusMessages = {
   idle: "",
   sending: "Enviando sua mensagem…",
   success: "Mensagem enviada. Obrigado pelo contato.",
-  error: "Não foi possível confirmar o envio. Use o link de email ao lado.",
+  error: "Não foi possível confirmar o envio. Use o link de email nesta seção.",
 };
 
 export default function ContactSection() {
   const [status, setStatus] = useState("idle");
+  const submissionControllerRef = useRef(null);
+  const submissionInFlightRef = useRef(false);
+  const mountedRef = useRef(true);
   const directEmailUrl = useMemo(
     () =>
       `mailto:${profile.email}?subject=${encodeURIComponent(
@@ -28,8 +31,18 @@ export default function ContactSection() {
     [],
   );
 
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+      submissionControllerRef.current?.abort();
+    };
+  }, []);
+
   async function handleSubmit(event) {
     event.preventDefault();
+    if (submissionInFlightRef.current) return;
+
     const form = event.currentTarget;
     const data = new FormData(form);
 
@@ -39,11 +52,13 @@ export default function ContactSection() {
       return;
     }
 
-    data.append("_captcha", "false");
-    data.append("_template", "table");
+    data.set("_captcha", "false");
+    data.set("_template", "table");
+    submissionInFlightRef.current = true;
     setStatus("sending");
 
     const controller = new AbortController();
+    submissionControllerRef.current = controller;
     const timeoutId = window.setTimeout(() => controller.abort(), 10000);
 
     try {
@@ -60,11 +75,15 @@ export default function ContactSection() {
       if (!response.ok) throw new Error(`contact_${response.status}`);
 
       form.reset();
-      setStatus("success");
+      if (mountedRef.current) setStatus("success");
     } catch {
-      setStatus("error");
+      if (mountedRef.current) setStatus("error");
     } finally {
       window.clearTimeout(timeoutId);
+      if (submissionControllerRef.current === controller) {
+        submissionControllerRef.current = null;
+        submissionInFlightRef.current = false;
+      }
     }
   }
 
@@ -74,14 +93,26 @@ export default function ContactSection() {
       eyebrow="Contato"
       title="Quer falar comigo?"
       description="Você pode mandar uma mensagem por aqui ou me chamar pelo email, LinkedIn ou GitHub."
-      className="contact-section"
+      className="contact-section editorial-section editorial-contact-section"
     >
-      <div className="contact-layout">
+      <div className="contact-layout editorial-contact" data-status={status}>
         <form
-          className="contact-form"
+          className="contact-form editorial-contact__form"
+          action={`https://formsubmit.co/${profile.email}`}
+          method="POST"
           onSubmit={handleSubmit}
           aria-busy={status === "sending"}
         >
+          <input name="_captcha" type="hidden" value="false" />
+          <input name="_template" type="hidden" value="table" />
+          <header className="editorial-contact__form-header" aria-hidden="true">
+            <span>message.compose</span>
+            <div>
+              <i />
+              contato direto
+            </div>
+          </header>
+
           <div className="form-row">
             <div className="form-field">
               <label htmlFor="contact-name">Nome</label>
@@ -145,12 +176,13 @@ export default function ContactSection() {
 
           <div className="form-footer">
             <button
-              className="button button--primary"
+              className="button button--primary editorial-contact__submit"
               type="submit"
               disabled={status === "sending"}
             >
               <span>{status === "sending" ? "Enviando…" : "Enviar mensagem"}</span>
               <Send size={17} aria-hidden="true" />
+              <i className="editorial-contact__submit-signal" aria-hidden="true" />
             </button>
             <p
               className={`form-status form-status--${status}`}
@@ -162,14 +194,21 @@ export default function ContactSection() {
           </div>
         </form>
 
-        <aside className="contact-aside">
+        <aside className="contact-aside editorial-contact__aside">
           <div>
             <span className="eyebrow">Contato</span>
             <h3>Onde me encontrar</h3>
             <p>Respondo assim que puder.</p>
           </div>
 
-          <address>
+          <div className="editorial-contact__radar" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+            <span />
+          </div>
+
+          <address className="editorial-contact__address">
             <a href={directEmailUrl}>
               <Mail size={18} aria-hidden="true" />
               <span>
@@ -208,9 +247,21 @@ export default function ContactSection() {
             </div>
           </address>
 
-          <Button href={profile.cvUrl} icon={Download} variant="secondary" download>
+          <Button
+            href={profile.cvUrl}
+            icon={Download}
+            variant="secondary"
+            download
+            className="editorial-contact__cv"
+          >
             Baixar currículo em PDF
           </Button>
+
+          <div className="editorial-contact__signature" aria-hidden="true">
+            <span>EW</span>
+            <i />
+            <small>SC · BR</small>
+          </div>
         </aside>
       </div>
     </Section>
