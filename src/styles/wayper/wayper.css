@@ -1,0 +1,1046 @@
+.wayper-experience {
+  --wayper-route-progress: 0;
+  --wayper-territory-progress: 0;
+  --wayper-sync-progress: 0;
+  position: relative;
+  isolation: isolate;
+  padding-top: clamp(1.5rem, 5vw, 4.5rem);
+}
+
+.wayper-experience::before {
+  position: absolute;
+  z-index: -1;
+  top: 8rem;
+  right: -24rem;
+  width: min(58rem, 92vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184, 255, 61, 0.09), transparent 68%);
+  filter: blur(32px);
+  content: "";
+  pointer-events: none;
+}
+
+.wayper-experience__intro {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  padding-block: clamp(1.5rem, 4vw, 3rem) clamp(3rem, 8vw, 7rem);
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.wayper-experience__identity,
+.wayper-experience__intro-actions,
+.wayper-experience__headline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.wayper-experience__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-text-soft);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.wayper-experience__status i,
+.wayper-stage__quality i {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 14px rgba(184, 255, 61, 0.76);
+}
+
+.wayper-experience__headline {
+  align-items: end;
+}
+
+.wayper-experience__headline > div {
+  min-width: min(100%, 20rem);
+}
+
+.wayper-experience__coordinate {
+  display: block;
+  margin-bottom: 0.7rem;
+  color: var(--color-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.wayper-experience__headline h3 {
+  font-size: clamp(4.2rem, 17vw, 11.5rem);
+  font-weight: 760;
+  letter-spacing: -0.085em;
+  line-height: 0.76;
+}
+
+.wayper-experience__headline > p {
+  max-width: 28rem;
+  color: var(--color-text-soft);
+  font-size: clamp(1.05rem, 2vw, 1.32rem);
+  line-height: 1.65;
+}
+
+.wayper-experience__intro-actions {
+  justify-content: flex-start;
+  gap: 1.25rem;
+}
+
+.wayper-story {
+  position: relative;
+  display: grid;
+  gap: clamp(3rem, 8vw, 6rem);
+}
+
+.wayper-stage-shell {
+  min-width: 0;
+}
+
+.wayper-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(31rem, 70svh, 47rem);
+  overflow: hidden;
+  border: 1px solid rgba(184, 255, 61, 0.24);
+  border-radius: clamp(1rem, 3vw, 2rem);
+  background: #060a07;
+  box-shadow:
+    0 40px 120px rgba(0, 0, 0, 0.42),
+    inset 0 0 90px rgba(184, 255, 61, 0.025);
+  transition:
+    border-color 420ms ease,
+    box-shadow 520ms ease;
+  touch-action: pan-y;
+}
+
+.wayper-experience[data-wayper-chapter="3"] .wayper-stage {
+  border-color: rgba(184, 255, 61, 0.58);
+  box-shadow:
+    0 42px 140px rgba(0, 0, 0, 0.5),
+    0 0 90px rgba(184, 255, 61, 0.13),
+    inset 0 0 120px rgba(184, 255, 61, 0.055);
+}
+
+.wayper-stage::before,
+.wayper-stage::after {
+  position: absolute;
+  z-index: 3;
+  content: "";
+  pointer-events: none;
+}
+
+.wayper-stage::before {
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(184, 255, 61, 0.055), transparent 38%),
+    radial-gradient(circle at 18% 82%, rgba(85, 199, 243, 0.025), transparent 34%);
+}
+
+.wayper-stage::after {
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, rgba(85, 199, 243, 0.05), transparent 20% 80%, rgba(184, 255, 61, 0.045)),
+    radial-gradient(circle at 50% 42%, transparent 46%, rgba(2, 5, 3, 0.56) 100%);
+}
+
+.wayper-visual-frame,
+.wayper-canvas,
+.wayper-canvas > div,
+.wayper-canvas canvas,
+.wayper-fallback {
+  width: 100%;
+  height: 100%;
+}
+
+.wayper-visual-frame {
+  position: relative;
+  z-index: 1;
+}
+
+.wayper-canvas {
+  display: block;
+}
+
+.wayper-canvas canvas {
+  display: block;
+  outline: none;
+  touch-action: pan-y;
+}
+
+.wayper-stage__chrome,
+.wayper-stage__quality {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: rgba(224, 239, 225, 0.66);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.wayper-stage__chrome {
+  top: 1rem;
+  right: 1rem;
+  left: 1rem;
+  justify-content: space-between;
+}
+
+.wayper-stage__quality {
+  right: 1rem;
+  bottom: 1rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid rgba(227, 240, 229, 0.13);
+  border-radius: var(--radius-pill);
+  background: rgba(5, 9, 6, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.wayper-stage__progress {
+  position: absolute;
+  z-index: 5;
+  right: 1rem;
+  bottom: 0;
+  left: 1rem;
+  height: 2px;
+  overflow: hidden;
+  background: rgba(227, 240, 229, 0.12);
+  pointer-events: none;
+}
+
+.wayper-stage__progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  box-shadow: 0 0 14px rgba(184, 255, 61, 0.5);
+  transition: transform 380ms var(--ease-out);
+}
+
+.wayper-fallback {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(85, 199, 243, 0.14), transparent 30%),
+    linear-gradient(145deg, #0c1510, #050806 74%);
+}
+
+.wayper-fallback__topography {
+  position: absolute;
+  inset: -28%;
+  opacity: 0.34;
+  background: repeating-radial-gradient(
+    ellipse at 32% 65%,
+    transparent 0 1.4rem,
+    rgba(184, 255, 61, 0.12) 1.46rem 1.52rem
+  );
+  transform: rotate(17deg);
+}
+
+.wayper-fallback__map {
+  position: absolute;
+  inset: 3%;
+  width: 94%;
+  height: 94%;
+  overflow: visible;
+  transform: perspective(900px) rotateX(48deg) rotateZ(-8deg) scale(1.06);
+}
+
+.wayper-fallback__blocks rect {
+  fill: rgba(210, 232, 215, 0.018);
+  stroke: rgba(210, 232, 215, 0.1);
+  stroke-width: 2;
+}
+
+.wayper-fallback__territory {
+  opacity: 0;
+  stroke: rgba(184, 255, 61, 0.72);
+  stroke-width: 5;
+  transform: scale(0.96);
+  transform-origin: center;
+  transition:
+    opacity 420ms ease,
+    transform 720ms var(--ease-out);
+}
+
+.wayper-fallback__territory.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.wayper-fallback__route-shadow,
+.wayper-fallback__route {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.wayper-fallback__route-shadow {
+  stroke: rgba(0, 0, 0, 0.82);
+  stroke-width: 17;
+}
+
+.wayper-fallback__route {
+  stroke: var(--color-primary);
+  stroke-width: 7;
+}
+
+.wayper-fallback__marker-ring {
+  fill: rgba(184, 255, 61, 0.1);
+  stroke: rgba(184, 255, 61, 0.56);
+  stroke-width: 3;
+}
+
+.wayper-fallback__marker {
+  fill: #efffd5;
+  stroke: var(--color-primary);
+  stroke-width: 5;
+}
+
+.wayper-fallback__hud,
+.wayper-fallback__sync {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid rgba(227, 240, 229, 0.16);
+  border-radius: 0.7rem;
+  background: rgba(4, 8, 5, 0.78);
+  color: var(--color-text-soft);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  backdrop-filter: blur(10px);
+}
+
+.wayper-fallback__hud {
+  top: 3.2rem;
+  left: 1rem;
+}
+
+.wayper-fallback__hud > span:nth-child(2),
+.wayper-fallback__sync {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.wayper-fallback__hud strong {
+  color: var(--color-primary);
+  font-size: 0.7rem;
+}
+
+.wayper-fallback__sync {
+  right: 1rem;
+  bottom: 2rem;
+  color: var(--color-secondary);
+  opacity: 0.58;
+  transition: opacity 320ms ease;
+}
+
+.wayper-fallback__sync.is-visible {
+  opacity: 1;
+}
+
+.wayper-demo-badge {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.42rem;
+  border: 1px solid rgba(184, 255, 61, 0.55);
+  border-radius: var(--radius-pill);
+  background: rgba(184, 255, 61, 0.12);
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.wayper-device-hud-anchor {
+  pointer-events: none !important;
+}
+
+.wayper-device-hud {
+  display: flex;
+  width: clamp(188px, 20vw, 226px);
+  height: clamp(342px, 43vw, 426px);
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 11px 10px;
+  color: rgba(240, 247, 238, 0.92);
+  font-family: var(--font-mono);
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wayper-device-hud header,
+.wayper-device-hud footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wayper-device-hud header i {
+  width: 6px;
+  height: 6px;
+  margin-left: auto;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 12px var(--color-primary);
+}
+
+.wayper-device-hud header small {
+  color: rgba(227, 240, 229, 0.74);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+}
+
+.wayper-device-hud__dashboard {
+  display: grid;
+  gap: 7px;
+  padding: 9px;
+  border: 1px solid rgba(184, 255, 61, 0.28);
+  border-radius: 12px;
+  background:
+    linear-gradient(145deg, rgba(184, 255, 61, 0.075), transparent 58%),
+    rgba(3, 9, 5, 0.94);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.38),
+    inset 0 1px rgba(255, 255, 255, 0.035);
+}
+
+.wayper-device-hud__readout {
+  display: grid;
+  min-height: 48px;
+  align-content: center;
+  gap: 5px;
+  padding: 4px 3px 8px;
+  border-bottom: 1px solid rgba(227, 240, 229, 0.12);
+}
+
+.wayper-device-hud__readout small {
+  color: var(--color-secondary);
+  font-size: 8px;
+  letter-spacing: 0.14em;
+}
+
+.wayper-device-hud__readout strong {
+  color: #f0f7ed;
+  font-size: 12px;
+  font-weight: 760;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+}
+
+.wayper-device-hud footer {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 0.9fr;
+  gap: 7px;
+  align-items: stretch;
+  padding: 2px 3px 1px;
+}
+
+.wayper-device-hud footer span {
+  display: grid;
+  align-content: center;
+  gap: 4px;
+  color: rgba(240, 247, 238, 0.92);
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.wayper-device-hud footer span + span {
+  padding-left: 7px;
+  border-left: 1px solid rgba(227, 240, 229, 0.1);
+}
+
+.wayper-device-hud footer small {
+  color: rgba(213, 225, 214, 0.56);
+  font-size: 6px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.wayper-chapters {
+  position: relative;
+  display: grid;
+  min-width: 0;
+}
+
+.wayper-chapter__mobile-climax {
+  display: block;
+  height: clamp(20rem, 82vw, 29rem);
+  margin-top: 0.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(184, 255, 61, 0.3);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1.75rem 5rem rgba(0, 0, 0, 0.34);
+}
+
+.wayper-chapters__rail {
+  display: flex;
+  gap: 0.45rem;
+  padding-bottom: 1.5rem;
+}
+
+.wayper-chapters__rail span {
+  width: 100%;
+  height: 2px;
+  background: rgba(227, 240, 229, 0.12);
+  transition: background 280ms ease;
+}
+
+.wayper-chapters__rail span.is-active {
+  background: var(--color-primary);
+  box-shadow: 0 0 10px rgba(184, 255, 61, 0.4);
+}
+
+.wayper-chapter {
+  position: relative;
+  display: grid;
+  align-content: center;
+  min-width: 0;
+  gap: 1.4rem;
+  padding: clamp(2rem, 6vw, 4.5rem) 0;
+  border-top: 1px solid var(--color-border);
+  opacity: 0.62;
+  transition:
+    opacity 380ms ease,
+    transform 520ms var(--ease-out);
+}
+
+.wayper-chapter[data-active="true"] {
+  opacity: 1;
+}
+
+.wayper-chapter--climax {
+  border-color: rgba(184, 255, 61, 0.34);
+}
+
+.wayper-chapter header {
+  display: grid;
+  grid-template-columns: 2rem 2.75rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.85rem;
+}
+
+.wayper-chapter__index {
+  padding-top: 0.68rem;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+}
+
+.wayper-chapter__icon {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 0.78rem;
+  background: rgba(255, 255, 255, 0.018);
+  color: var(--color-secondary);
+}
+
+.wayper-chapter[data-active="true"] .wayper-chapter__icon,
+.wayper-chapter--climax .wayper-chapter__icon {
+  border-color: rgba(184, 255, 61, 0.42);
+  background: var(--color-primary-muted);
+  color: var(--color-primary);
+  box-shadow: 0 0 28px rgba(184, 255, 61, 0.09);
+}
+
+.wayper-chapter header > div {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.wayper-chapter h4 {
+  max-width: 18ch;
+  font-size: clamp(1.55rem, 4.3vw, 2.65rem);
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+}
+
+.wayper-chapter > p {
+  max-width: 42rem;
+  color: var(--color-text-soft);
+  font-size: 0.96rem;
+  line-height: 1.8;
+}
+
+.wayper-chapter > ul {
+  display: grid;
+  gap: 0.72rem;
+}
+
+.wayper-chapter > ul li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.wayper-chapter > ul li::before {
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 0.48rem;
+  height: 1px;
+  background: var(--color-primary);
+  content: "";
+}
+
+.wayper-chapter__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.75rem;
+}
+
+.wayper-chapter__cta > span {
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+}
+
+.wayper-flow {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+  padding: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: rgba(4, 8, 5, 0.58);
+}
+
+.wayper-flow__viewport {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(184, 255, 61, 0.38) transparent;
+}
+
+.wayper-flow__viewport svg {
+  width: 50rem;
+  max-width: none;
+  height: auto;
+}
+
+.wayper-flow__line {
+  fill: none;
+  stroke: url("#wayper-flow-gradient");
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.wayper-flow__node rect {
+  fill: #0d1711;
+  stroke: rgba(184, 255, 61, 0.42);
+  stroke-width: 1.5;
+}
+
+.wayper-flow__node circle {
+  fill: var(--color-primary);
+  filter: drop-shadow(0 0 5px rgba(184, 255, 61, 0.8));
+}
+
+.wayper-flow__node path {
+  fill: none;
+  stroke: rgba(211, 227, 213, 0.56);
+  stroke-width: 1.4;
+}
+
+.wayper-flow__labels {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(6rem, 1fr));
+  gap: 0.45rem;
+  min-width: 45rem;
+}
+
+.wayper-flow__labels li {
+  display: grid;
+  gap: 0.2rem;
+  color: var(--color-text-soft);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  line-height: 1.35;
+}
+
+.wayper-flow__labels li span {
+  color: var(--color-secondary);
+  font-size: 0.52rem;
+}
+
+.wayper-dossier {
+  position: relative;
+  display: grid;
+  gap: clamp(2.5rem, 7vw, 5rem);
+  margin-top: clamp(4rem, 11vw, 9rem);
+  padding-top: clamp(3rem, 7vw, 6rem);
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.wayper-dossier__heading {
+  display: grid;
+  max-width: 50rem;
+  gap: 1rem;
+}
+
+.wayper-dossier__heading h4 {
+  max-width: 17ch;
+  font-size: clamp(2rem, 6vw, 4rem);
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+}
+
+.wayper-dossier__heading p {
+  max-width: 43rem;
+  color: var(--color-text-soft);
+  line-height: 1.75;
+}
+
+.wayper-dossier__grid,
+.wayper-evolution-grid {
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  background: var(--color-border);
+}
+
+.wayper-capability-list,
+.wayper-engineering-list,
+.wayper-evolution-grid > article {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  background: var(--color-bg-raised);
+}
+
+.wayper-capability-list > header,
+.wayper-engineering-list > header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  color: var(--color-primary);
+}
+
+.wayper-capability-list > header > div,
+.wayper-engineering-list > header > div {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.wayper-capability-list h5,
+.wayper-engineering-list h5,
+.wayper-evolution-grid h5 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 1.22rem;
+  letter-spacing: -0.025em;
+}
+
+.wayper-capability-list > ul {
+  display: grid;
+  gap: 0;
+}
+
+.wayper-capability-list > ul li {
+  padding-block: 0.9rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-soft);
+  font-size: 0.86rem;
+}
+
+.wayper-engineering-list > div {
+  display: grid;
+}
+
+.wayper-engineering-list section {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.wayper-engineering-list section > span {
+  color: var(--color-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+}
+
+.wayper-engineering-list h6 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 0.92rem;
+}
+
+.wayper-engineering-list section p {
+  margin-top: 0.4rem;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.wayper-evolution-grid > article {
+  display: grid;
+  align-content: start;
+  gap: 0.9rem;
+}
+
+.wayper-evolution-grid ul {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.wayper-evolution-grid li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: var(--color-text-soft);
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+
+.wayper-evolution-grid li::before {
+  position: absolute;
+  top: 0.7em;
+  left: 0;
+  width: 0.42rem;
+  height: 1px;
+  background: var(--color-primary);
+  content: "";
+}
+
+.wayper-stack-panel {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(130deg, rgba(184, 255, 61, 0.045), transparent 44%),
+    var(--color-bg-raised);
+}
+
+.wayper-stack-panel > div {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.wayper-stack-panel p {
+  color: var(--color-muted);
+  font-size: 0.84rem;
+}
+
+.wayper-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 30rem) {
+  .wayper-experience__headline h3 {
+    font-size: clamp(4rem, 24vw, 6rem);
+  }
+
+  .wayper-stage {
+    height: 31rem;
+  }
+
+  .wayper-stage__chrome > span:first-child,
+  .wayper-stage__quality {
+    display: none;
+  }
+
+  .wayper-stage__chrome {
+    justify-content: flex-end;
+  }
+
+  .wayper-device-hud {
+    width: 176px;
+    height: 326px;
+    padding: 9px 8px 8px;
+  }
+
+  .wayper-device-hud__dashboard {
+    gap: 6px;
+    padding: 7px;
+  }
+
+  .wayper-device-hud__readout strong {
+    font-size: 11px;
+  }
+
+  .wayper-device-hud footer {
+    gap: 5px;
+  }
+
+  .wayper-device-hud footer span,
+  .wayper-device-hud header small {
+    font-size: 7px;
+  }
+
+  .wayper-device-hud footer span + span {
+    padding-left: 5px;
+  }
+
+  .wayper-fallback__sync {
+    right: auto;
+    bottom: 1.2rem;
+    left: 1rem;
+  }
+
+  .wayper-chapter header {
+    grid-template-columns: 1.6rem 2.5rem minmax(0, 1fr);
+    gap: 0.65rem;
+  }
+
+  .wayper-chapter__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+@media (min-width: 48rem) {
+  .wayper-experience__intro-actions {
+    justify-content: flex-end;
+  }
+
+  .wayper-dossier__grid,
+  .wayper-evolution-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wayper-stack-panel {
+    grid-template-columns: minmax(12rem, 0.42fr) minmax(0, 1.58fr);
+    align-items: center;
+  }
+}
+
+@media (min-width: 64rem) {
+  .wayper-chapter__mobile-climax {
+    display: none;
+  }
+
+  .wayper-story {
+    grid-template-columns: minmax(0, 1.22fr) minmax(22rem, 0.78fr);
+    align-items: start;
+    gap: clamp(3rem, 6vw, 6rem);
+  }
+
+  .wayper-stage {
+    height: calc(100svh - 6rem);
+    min-height: 36rem;
+    max-height: 52rem;
+  }
+
+  .wayper-chapters__rail {
+    position: sticky;
+    z-index: 4;
+    top: calc(var(--header-height) + 0.75rem);
+    padding-block: 0.75rem 1rem;
+    background: linear-gradient(var(--color-bg), rgba(7, 9, 8, 0.82), transparent);
+  }
+
+  .wayper-chapter {
+    min-height: 78svh;
+    transform: translateX(0.8rem);
+  }
+
+  .wayper-chapter[data-active="true"] {
+    transform: translateX(0);
+  }
+
+  .wayper-flow {
+    margin-right: min(-4vw, -1rem);
+  }
+}
+
+@media (min-width: 90rem) {
+  .wayper-story {
+    grid-template-columns: minmax(0, 1.3fr) minmax(24rem, 0.7fr);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wayper-visual-frame {
+    cursor: crosshair;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wayper-chapter {
+    opacity: 1;
+    transform: none;
+  }
+
+  .wayper-stage__progress span,
+  .wayper-fallback__territory,
+  .wayper-fallback__sync {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .wayper-stage,
+  .wayper-flow,
+  .wayper-dossier__grid,
+  .wayper-evolution-grid,
+  .wayper-stack-panel {
+    border: 1px solid CanvasText;
+  }
+
+  .wayper-experience__status i,
+  .wayper-stage__quality i {
+    border: 1px solid currentColor;
+  }
+}
+
+@media print {
+  .wayper-stage,
+  .wayper-chapters__rail {
+    display: none;
+  }
+
+  .wayper-story {
+    display: block;
+  }
+
+  .wayper-chapter {
+    min-height: auto;
+    opacity: 1;
+    break-inside: avoid;
+  }
+}

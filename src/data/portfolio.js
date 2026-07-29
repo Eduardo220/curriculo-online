@@ -49,45 +49,56 @@ export const experiences = [
     period: "Atual",
     current: true,
     summary:
-      "Desenvolvimento e manutenção de APIs, serviços e aplicativos mobile usados em operações digitais e de e-commerce.",
+      "Desenvolvimento e manutenção da plataforma em PHP, integrações com diferentes APIs e aplicativos mobile usados em operações digitais e de e-commerce.",
     groups: [
       {
-        title: "Backend",
+        title: "Plataforma e backend",
         items: [
-          "Desenvolvimento de serviços em C# e .NET, APIs REST, workers e microsserviços.",
-          "Manutenção e correção de fluxos ligados a pedidos, pagamentos, produtos e clientes.",
+          "Desenvolvimento e manutenção de funcionalidades da plataforma, principalmente em PHP.",
+          "Evolução de serviços em C# e .NET e de fluxos ligados a pedidos, pagamentos, produtos e clientes.",
         ],
       },
       {
-        title: "Mobile",
+        title: "Integrações e APIs",
         items: [
-          "Desenvolvimento e manutenção de sistemas mobile com React Native.",
-          "Ajustes em telas, fluxos e consumo de APIs nos aplicativos.",
+          "Desenvolvimento e manutenção de integrações principalmente em C, conectando diferentes APIs.",
+          "Investigação de falhas por logs, banco de dados e comportamento das aplicações integradas.",
         ],
       },
       {
-        title: "Operação e diagnóstico",
+        title: "Mobile e evolução",
         items: [
-          "Investigação de problemas por logs, banco de dados e comportamento da aplicação.",
-          "Análise da causa, correção e cuidado para não gerar regressões em sistemas em uso.",
+          "Desenvolvimento e manutenção de sistemas mobile com React Native, incluindo telas, fluxos e consumo de APIs.",
+          "Go na evolução tecnológica da Venddor 2.0.",
         ],
       },
     ],
-    tools: ["C#", ".NET", "APIs REST", "Mobile", "React Native", "SQL Server", "Docker"],
+    tools: [
+      "PHP",
+      "C",
+      "C#",
+      ".NET",
+      "APIs REST",
+      "React Native",
+      "SQL Server",
+      "Go",
+    ],
   },
   {
     company: "Exército Brasileiro",
     role: "Soldado",
-    period: "2023 — fev 2025",
+    period: "MAR 2023 — FEV 2025",
     current: false,
     summary:
-      "Antes de entrar de vez na área de tecnologia, servi no Exército Brasileiro. Foi uma experiência com muita rotina, responsabilidade e trabalho em equipe.",
+      "Durante minha atuação no Exército Brasileiro, apoiei a seção de operações e planejamento (S3) na organização de instruções, cronogramas, escalas e atividades da unidade. A experiência fortaleceu minha capacidade de priorizar demandas, alinhar equipes e tomar decisões com responsabilidade.",
     groups: [
       {
-        title: "O que ficou dessa experiência",
+        title: "Planejamento, coordenação e liderança",
         items: [
-          "Organização e responsabilidade no cuidado com materiais, documentos e tarefas do dia a dia.",
-          "Comunicação clara, disciplina e calma para trabalhar sob pressão.",
+          "Planejamento e coordenação de instruções, treinamentos e demandas envolvendo diferentes equipes.",
+          "Organização de cronogramas, escalas, documentos e acompanhamento de prazos e pendências.",
+          "Alinhamento de pessoal, materiais e informações entre setores, com comunicação objetiva em diferentes níveis hierárquicos.",
+          "Liderança prática, disciplina e tomada de decisão sob pressão, com rápida adaptação a mudanças de prioridade e imprevistos.",
         ],
       },
     ],
@@ -205,8 +216,8 @@ export const stackGroups = [
   {
     title: "Backend",
     code: "core.services",
-    description: "APIs, serviços, regras de negócio e processamento em segundo plano.",
-    items: ["C#", ".NET", "ASP.NET", "APIs REST", "Workers", "Microsserviços"],
+    description: "Plataforma, APIs, integrações, regras de negócio e processamento em segundo plano.",
+    items: ["PHP", "C", "C#", ".NET", "ASP.NET", "APIs REST", "Workers", "Microsserviços"],
   },
   {
     title: "Dados",

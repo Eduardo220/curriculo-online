@@ -1,31 +1,36 @@
 # Portfólio — Eduardo Weissheimer
 
-Currículo online e portfólio em português brasileiro, com experiência profissional, formação, stack e projetos de Eduardo Weissheimer. O foco principal está em backend e desenvolvimento mobile; o Wayper aparece como destaque dentro da seção de projetos.
+Currículo online e portfólio imersivo em português brasileiro. A experiência combina direção editorial, cartografia técnica, scroll narrativo e cenas WebGL sem deixar de funcionar como um currículo profissional acessível.
 
-URL esperada: <https://eduardo220.github.io/curriculo-online/>
+Produção: <https://eduardo220.github.io/curriculo-online/>
 
-## Stack do site
+## Stack visual
 
-- React 19
-- Vite 8
-- Framer Motion
-- Lucide
-- CSS com tokens próprios
-- API pública do GitHub
-- FormSubmit para o formulário de contato
+- React 19 e Vite 8, em JavaScript;
+- Three.js, React Three Fiber e Drei para as cenas 3D;
+- GSAP e ScrollTrigger para timelines, scrub, pinning e câmera;
+- Motion para menu, botões, tilt e microinterações React;
+- Anime.js para telemetria e diagramas SVG precisos;
+- Lenis integrado ao ticker do GSAP para scroll suave elegível;
+- Lucide, CSS modular por domínio e tokens próprios;
+- API pública do GitHub e FormSubmit, ambos com fallback.
 
-O projeto permanece em JavaScript. Não há ganho suficiente, neste tamanho, para uma migração parcial para TypeScript.
+Não há backend, token, mapa pago, iframe, vídeo pesado, modelo remoto ou textura externa. O telefone, o mapa e os territórios da Wayper são procedurais.
 
 ## Execução local
 
-Requisito: Node.js 20.19 ou superior. O workflow usa Node.js 22.
+Requisito: Node.js 20.19 ou superior. O workflow de publicação usa Node.js 22.
 
 ```bash
 npm install
 npm run dev
 ```
 
-O Vite informa a URL local no terminal. Como o projeto usa o `base` do GitHub Pages, o caminho inclui `/curriculo-online/`.
+O `base` é `/curriculo-online/`, portanto a URL local padrão é:
+
+```text
+http://127.0.0.1:5173/curriculo-online/
+```
 
 Validação completa:
 
@@ -36,175 +41,210 @@ npm run build
 npm run preview
 ```
 
-`npm ci` deve ser usado em CI e em instalações limpas que respeitem exatamente o `package-lock.json`.
+Em uma instalação reproduzível de CI, prefira `npm ci`.
 
-## Estrutura
+Parâmetros úteis apenas para inspeção visual local:
+
+- `?skipIntro=1`: omite a abertura da sessão;
+- `?static=1`: desliga a timeline de entrada/saída do Hero para screenshots.
+
+Exemplo:
+
+```text
+http://127.0.0.1:5173/curriculo-online/?skipIntro=1&static=1#wayper
+```
+
+## Arquitetura
 
 ```text
 src/
+  animation/       registro GSAP, Lenis, easings e configuração Motion
   components/
-    common/       componentes compartilhados
-    layout/       cabeçalho, fundo e rodapé
-    sections/     seções editoriais
-    wayper/       estudo de caso e visual do Wayper
-  data/           conteúdo profissional centralizado
-  hooks/          comportamento de navegação
-  services/       consulta resiliente à API do GitHub
-  styles/         sistema visual global
-public/
-  images/         imagem social e foto para dados estruturados
+    common/         botões, seções e tags
+    effects/        abertura, background global e cursor
+    layout/         header, navegação e footer
+    sections/       capítulos editoriais do currículo
+    three/          Canvas, cena e shader do Hero
+    transitions/    revelações reutilizáveis
+    wayper/         narrativa, Canvas, fallback, HUD e diagrama
+  data/             única fonte de conteúdo profissional
+  hooks/            lifecycle, media queries, performance e ponteiro
+  services/         integração resiliente com o GitHub
+  shaders/          terreno do Hero e captura territorial
+  styles/           tokens e folhas por componente/seção
+  utils/            perfil de performance e rota demonstrativa
 docs/
-  auditoria-inicial.md
+  visual-motion-audit.md
+  visual-motion-validation.md
 ```
 
-## Atualização de conteúdo
+`src/styles/global.css` permanece como camada de compatibilidade para os contratos visuais antigos. A nova implementação está separada em `tokens.css`, `reset.css`, `layout.css`, `responsive.css`, `components/`, `effects/`, `sections/` e `wayper/`.
 
-As informações profissionais ficam em [`src/data/portfolio.js`](src/data/portfolio.js):
+## Responsabilidade das animações
 
-- `profile`: nome, cargo, localização e links;
-- `experiences`: Venddor e Exército Brasileiro;
-- `wayper`: conteúdo técnico do estudo de caso;
-- `projects`: projetos públicos secundários;
-- `stackGroups`: tecnologias organizadas por capacidade;
-- `education`: graduação e formação complementar;
-- `selectedGithubRepos`: repositórios que a API pode exibir.
+| Tecnologia | Responsabilidade |
+| --- | --- |
+| GSAP + ScrollTrigger | loader, Hero, headings, trilho de experiência e timeline única da Wayper |
+| Motion | menu mobile, presença, tap, magnetismo e tilt de interface |
+| Anime.js | telemetria do GitHub e fluxo SVG da arquitetura Wayper |
+| R3F + Three.js | terreno, partículas, telefone, mapa, rota, território, luz e câmera |
+| Lenis | scroll suave, hashes e sincronização com ScrollTrigger |
 
-Afirmações sobre o Wayper devem ser revisadas contra o código real antes de qualquer atualização. Tecnologias instaladas mas não usadas não devem entrar na lista.
+GSAP e Motion não controlam simultaneamente a mesma propriedade do mesmo elemento.
 
-## Atualização de projetos
+## Cenas
 
-Para adicionar um projeto:
+### Hero
 
-1. confirme que o link é público e correto;
-2. verifique o código, não apenas o README;
-3. descreva contexto, problema, solução, responsabilidade, resultado e status;
-4. não use métricas sem fonte;
-5. não apresente trabalho privado como repositório público.
+`HeroCanvas.jsx` carrega de forma dinâmica. `HeroScene.jsx` contém:
 
-O componente de projetos está em [`src/components/sections/ProjectsSection.jsx`](src/components/sections/ProjectsSection.jsx).
+- terreno topográfico com shader próprio;
+- rota espacial, marcador e partículas;
+- núcleo cartográfico em malha e anéis orbitais;
+- câmera com influência discreta do ponteiro e progresso de scroll;
+- fallback CSS/SVG quando WebGL, qualidade ou movimento não permitem a cena.
 
-## Currículo
+### Wayper
 
-O download usa `Assets/Curriculo.pdf`, importado pelo Vite para respeitar o `base` do GitHub Pages.
+`WayperSection.jsx` organiza sete capítulos e uma timeline ScrollTrigger reversível. No desktop, a cena fica fixada durante o scrub; no mobile, os capítulos seguem o fluxo natural e o clímax territorial recebe uma leitura SVG compacta junto ao texto.
 
-O PDF atual foi criado em agosto de 2025 e está desatualizado. Antes da publicação definitiva, ele deve ser substituído por uma versão que:
+`WayperCanvas.jsx` modela proceduralmente:
 
-- inclua a experiência atual na Venddor;
-- remova o texto de transição de carreira e busca da primeira oportunidade;
-- atualize o foco antigo em PHP/Laravel;
-- use a localização atual em Balneário Arroio do Silva, SC;
-- revise o período da formação;
-- remova telefone e redes antigas caso não devam continuar públicos;
-- confira as datas divergentes do Exército Brasileiro.
+- moldura, vidro, botões e tela do telefone;
+- ruas, quarteirões e mapa com profundidade;
+- rota demonstrativa progressiva e marcador;
+- polígono extrudado com shader territorial;
+- partículas de captura, iluminação de clímax e fluxo de sincronização;
+- HUD marcada como `DEMO`, sem apresentar métricas de usuários.
 
-Mantenha o mesmo caminho e nome do arquivo para não alterar o botão:
+O mesmo objeto de estado é interpolado pela timeline e lido no `useFrame`. Ao voltar o scroll, rota, território, câmera e telefone retornam ao estado anterior.
 
-```text
-Assets/Curriculo.pdf
+## Alterar a rota demonstrativa
+
+A rota normalizada está em `src/utils/wayperRoute.js`, na constante `DEMO_ROUTE`. Cada ponto usa coordenadas entre `0` e `1`:
+
+```js
+{ x: 0.24, y: 0.78 }
 ```
 
-## Imagens
+Ao alterar a forma:
 
-- `images/eu.jpg`: foto exibida na seção “Sobre”.
-- `public/images/eduardo-weissheimer.jpg`: cópia otimizada para dados estruturados.
-- `public/images/og-portfolio.jpg`: imagem 1200×630 usada por Open Graph e Twitter Card.
-- `public/favicon.png`: favicon otimizado.
+1. mantenha pontos suficientes para uma progressão suave;
+2. termine próximo ao ponto inicial para formar o loop;
+3. preserve os limites normalizados;
+4. execute `npm test`, pois os helpers de amostragem, progresso e fechamento são testados.
 
-Ao substituir imagens, preserve a proporção e otimize o arquivo antes do commit. Atualize texto alternativo e metadados quando o conteúdo visual mudar.
+Essa rota representa o conceito do produto; ela não duplica o motor geográfico do aplicativo.
 
-## GitHub público
+## Alterar os capítulos Wayper
 
-`src/services/github.js`:
+Os títulos e a ordem visual ficam em `buildChapters()`, dentro de `WayperSection.jsx`. Os fatos e textos profissionais continuam vindo de `src/data/portfolio.js`.
 
-- limita a consulta aos repositórios selecionados;
-- verifica a cota disponível antes de disparar o conjunto de requisições;
-- usa cache local por 30 minutos;
-- aplica timeout de 8 segundos;
-- aceita `AbortSignal`;
-- reaproveita cache expirado quando a rede falha;
-- tolera respostas parciais de linguagens;
-- nunca impede o restante da página de renderizar.
+A timeline possui sete trechos consecutivos, um por capítulo. Para mudar a duração relativa, ajuste a `duration` do trecho correspondente; para mudar uma pose, altere apenas as propriedades de `sceneStateRef`. Evite criar triggers independentes para câmera, telefone e rota.
 
-Os testes unitários validam seleção e agregação de linguagens:
+## Performance e code splitting
 
-```bash
-npm test
-```
+`usePerformanceMode()` combina:
 
-## Formulário de contato
+- WebGL;
+- `deviceMemory` e `hardwareConcurrency`, quando disponíveis;
+- DPR;
+- touch/ponteiro;
+- economia de dados e tipo de conexão;
+- uma amostra curta do tempo de frame;
+- `prefers-reduced-motion`.
 
-O formulário envia para o FormSubmit sem expor token. Há validação HTML, honeypot, timeout, feedback com `aria-live` e link `mailto:` como fallback.
+Os perfis são `high`, `medium`, `low` e `reduced`. Eles controlam DPR, partículas, antialias, sombras, Lenis e escolha entre Canvas e fallback.
 
-No primeiro envio real, o FormSubmit pode solicitar a ativação do endereço por email. Faça essa ativação antes de divulgar o formulário. Nenhum segredo deve ser adicionado ao frontend.
+Outras medidas:
 
-## Acessibilidade
+- Hero e Wayper em chunks dinâmicos;
+- o Canvas Wayper só é baixado ao se aproximar da viewport;
+- `frameloop` pausa fora da viewport e com a aba oculta;
+- geometrias e buffers são descartados no cleanup;
+- DPR limitado a 2 no Hero e 1,8 na Wayper;
+- blocos e partículas reduzidos no perfil `medium`;
+- grupos estáveis de React, Motion, GSAP e WebGL em `vite.config.js`;
+- chunk inicial reduzido para cerca de 138 kB minificados, antes de gzip;
+- nenhum aviso de chunk acima do limite padrão no build final.
 
-O site inclui:
+## Fallbacks
 
-- landmarks e hierarquia de títulos;
-- link para pular ao conteúdo;
-- foco visível;
-- navegação por teclado;
-- fechamento do menu com `Escape`;
-- bloqueio de scroll no menu mobile;
-- áreas clicáveis com pelo menos 44 px;
-- mensagens acessíveis no formulário;
-- contraste forte;
-- suporte a `prefers-reduced-motion`;
-- conteúdo funcional quando a API do GitHub falha.
+- Hero: composição topográfica CSS/SVG;
+- Wayper: mapa SVG com rota, território, HUD e sincronização;
+- WebGL: error boundary e tratamento de `webglcontextlost`;
+- baixa capacidade: perfil `low`, sem Canvas pesado;
+- movimento reduzido: sem loader, Lenis, cursor, pin, scrub ou câmera;
+- GitHub: cache de 30 minutos, cache expirado, seleção local e página íntegra;
+- contato: action HTML, validação nativa, honeypot, timeout, `aria-live` e `mailto:`;
+- JavaScript desativado: bloco `noscript` com email e GitHub.
 
-## SEO
+## Desligar e depurar efeitos
 
-`index.html` contém:
+Para testar a experiência essencial, ative “reduzir movimento” no sistema ou emule `prefers-reduced-motion: reduce` no DevTools. Isso é preferível a comentar componentes.
 
-- título e descrição;
-- canonical;
-- Open Graph;
-- Twitter Card;
-- JSON-LD do tipo `Person`, com ocupação, empresa, instituição, localização e conhecimentos;
-- imagem social própria.
+Pontos de controle:
 
-`public/robots.txt` e `public/sitemap.xml` usam a URL final do GitHub Pages.
+- Lenis: `src/hooks/useLenis.js`;
+- classificação: `src/utils/performance.js`;
+- Hero WebGL: `shouldRenderScene` em `Hero.jsx`;
+- Wayper WebGL/fallback: `fallbackRequired` em `WayperVisual.jsx`;
+- timelines: `Hero.jsx`, `Section.jsx`, `ExperienceSection.jsx` e `WayperSection.jsx`.
 
-Ao mudar o endereço de publicação, atualize:
+Para depurar ScrollTrigger, use temporariamente `markers: true` no trigger relevante e confira `ScrollTrigger.getAll()` no console. Remova os markers antes de publicar. Após mudanças de altura, use `ScrollTrigger.refresh()`.
 
-- `vite.config.js`;
-- canonical e URLs sociais em `index.html`;
-- `public/robots.txt`;
-- `public/sitemap.xml`.
+Para WebGL, confira o perfil mostrado na moldura da cena, teste context loss no DevTools e verifique se o fallback aparece. Mensagens `GL Driver Message` produzidas por screenshot com SwiftShader pertencem ao Chrome headless, não à aplicação.
 
-## Direção visual
+## Conteúdo profissional
 
-O sistema usa grafite, verde elétrico e azul técnico. Grades, topografia e telemetria aparecem como linguagem visual do portfólio; o mapa territorial fica concentrado no projeto Wayper. As famílias tipográficas são a pilha sans-serif do sistema e uma pilha monoespaçada para labels técnicos.
+As informações reais ficam em `src/data/portfolio.js`:
 
-As animações usam principalmente `transform` e `opacity`, ficam mais discretas no mobile e são removidas quando o sistema solicita redução de movimento.
+- `profile`;
+- `experiences`;
+- `wayper`;
+- `projects`;
+- `stackGroups`;
+- `education`;
+- `selectedGithubRepos`.
 
-## Publicação no GitHub Pages
+Não inclua tecnologia, métrica ou funcionalidade sem confirmação no projeto real.
 
-O workflow está em `.github/workflows/deploy.yml` e executa, em push na `main`:
+## GitHub e contato
+
+`src/services/github.js` verifica cota, limita repositórios, aplica timeout de oito segundos, aceita `AbortSignal`, tolera linguagens parciais e usa cache expirado quando necessário.
+
+O formulário usa FormSubmit sem segredo no frontend. No primeiro envio real, o serviço pode pedir ativação por email. Os testes de navegador bloqueiam o endpoint para validar o estado de erro sem enviar mensagens artificiais.
+
+## Currículo e imagens
+
+- `Assets/Curriculo.pdf`: arquivo servido pelo Vite e baixado como `Curriculo-Eduardo-Weissheimer.pdf`;
+- `images/eu.jpg`: foto da seção Sobre;
+- `public/images/eduardo-weissheimer.jpg`: imagem dos dados estruturados;
+- `public/images/og-portfolio.jpg`: Open Graph/Twitter 1200 × 630;
+- `public/favicon.png`: favicon 96 × 96.
+
+O PDF preservado foi criado em agosto de 2025 e continua desatualizado em relação à experiência atual. Substitua o conteúdo mantendo o mesmo caminho para não quebrar o download.
+
+## Acessibilidade e SEO
+
+O site preserva skip link, landmarks, uma única `h1`, headings hierárquicos, foco visível, menu com trap de foco e Escape, targets de toque, textos equivalentes aos Canvas, labels, `aria-live`, reduced motion e navegação por hashes.
+
+`index.html` mantém canonical, Open Graph, Twitter Card e JSON-LD. `public/robots.txt`, `public/sitemap.xml`, `vite.config.js` e o workflow de Pages usam `/curriculo-online/`.
+
+## Publicação
+
+`.github/workflows/deploy.yml` executa em `main` ou manualmente:
 
 1. `npm ci`;
 2. lint;
 3. testes;
 4. build;
 5. upload de `dist`;
-6. deploy com as actions oficiais do GitHub Pages.
+6. deploy pelas actions oficiais do GitHub Pages.
 
-Configuração manual:
+Não versione `dist`. Em **Settings → Pages**, a fonte deve ser **GitHub Actions**.
 
-1. abra **Settings → Pages** no repositório;
-2. em **Build and deployment**, selecione **GitHub Actions**;
-3. faça merge da branch de desenvolvimento na `main`;
-4. acompanhe o workflow **Deploy GitHub Pages** na aba Actions.
+## Relatórios
 
-Também é possível executar o workflow manualmente por `workflow_dispatch`.
-
-## Segurança e privacidade
-
-- não há telefone ou WhatsApp no site;
-- não há tokens, credenciais ou configurações privadas;
-- detalhes de clientes e código da Venddor não são expostos;
-- a API usada é pública;
-- os serviços externos são GitHub API e FormSubmit.
-
-O relatório técnico inicial está em [`docs/auditoria-inicial.md`](docs/auditoria-inicial.md).
+- Auditoria anterior à implementação: [`docs/visual-motion-audit.md`](docs/visual-motion-audit.md)
+- Validação final: [`docs/visual-motion-validation.md`](docs/visual-motion-validation.md)

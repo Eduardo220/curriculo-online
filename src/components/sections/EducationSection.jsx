@@ -9,10 +9,19 @@ export default function EducationSection() {
       eyebrow="Formação"
       title="Formação e cursos."
       description="Minha graduação e alguns cursos que complementam o que uso no dia a dia."
-      className="education-section"
+      className="education-section editorial-section editorial-education"
     >
-      <div className="education-layout">
-        <article className="degree-card">
+      <div className="editorial-education__rail" aria-hidden="true">
+        <span>learning.path</span>
+        <i />
+        <strong>em evolução</strong>
+      </div>
+
+      <div className="education-layout editorial-education__layout">
+        <article className="degree-card editorial-education__degree">
+          <span className="editorial-education__index" aria-hidden="true">
+            01
+          </span>
           <div className="degree-card__icon">
             <GraduationCap size={26} aria-hidden="true" />
           </div>
@@ -22,16 +31,25 @@ export default function EducationSection() {
             <p>{education.institution}</p>
           </div>
           <strong>{education.period}</strong>
+          <span className="editorial-education__progress" aria-hidden="true">
+            <i />
+          </span>
         </article>
 
-        <article className="courses-card">
+        <article className="courses-card editorial-education__courses">
           <header>
             <BookOpen size={20} aria-hidden="true" />
-            <h3>Cursos complementares</h3>
+            <div>
+              <span aria-hidden="true">02 · complemento</span>
+              <h3>Cursos complementares</h3>
+            </div>
           </header>
           <ul>
-            {education.complementary.map((course) => (
-              <li key={course}>{course}</li>
+            {education.complementary.map((course, index) => (
+              <li key={course}>
+                <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                {course}
+              </li>
             ))}
           </ul>
         </article>
